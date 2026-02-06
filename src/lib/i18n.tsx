@@ -32,7 +32,7 @@ const translations: Record<string, Record<Locale, string>> = {
   "nav.bookNow": { ar: "احجزي الآن", en: "Book Now" },
 
   // Hero
-  "hero.subtitle": { ar: "استوديو رموش فاخر في جدة", en: "Premium Lash Studio in Jeddah" },
+  "hero.subtitle": { ar: "مساحة صُممت لراحتك و جمالك", en: "A Space Designed for Your Comfort & Beauty" },
   "hero.title1": { ar: "ارتقي بجمالك", en: "Elevate Your" },
   "hero.title2": { ar: "الطبيعي", en: "Natural Beauty" },
   "hero.description": {
