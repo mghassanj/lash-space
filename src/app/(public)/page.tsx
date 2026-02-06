@@ -75,20 +75,23 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-gradient-to-br from-[#1A1A1A] via-[#9C8974]/20 to-[#1A1A1A]">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#1A1A1A]">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#9C8974]/30 via-[#BAB0A5]/10 to-[#1A1A1A]" />
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="mb-6 font-serif text-5xl font-bold text-white md:text-7xl">
-            Elevate Your Natural Beauty
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#BAB0A5]">
+            Premium Lash Studio in Jeddah
+          </p>
+          <h1 className="mb-6 font-serif text-5xl font-bold text-[#E8E8DC] md:text-7xl">
+            Elevate Your<br />Natural Beauty
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-200 md:text-xl">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-[#BBBAB3] md:text-xl">
             {SITE_CONFIG.description}
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               asChild
               size="lg"
-              className="bg-[#9C8974] px-8 text-lg hover:bg-[#7A6B5A]"
+              className="bg-[#9C8974] px-8 text-lg text-white hover:bg-[#7A6B5A]"
             >
               <Link href="/booking">Book Your Appointment</Link>
             </Button>
@@ -96,7 +99,7 @@ export default function HomePage() {
               asChild
               size="lg"
               variant="outline"
-              className="border-white px-8 text-lg text-white hover:bg-white/10"
+              className="border-[#BAB0A5]/50 bg-transparent px-8 text-lg text-[#E8E8DC] hover:border-[#9C8974] hover:bg-[#9C8974]/10"
             >
               <Link href="/services">Explore Services</Link>
             </Button>
@@ -204,19 +207,18 @@ export default function HomePage() {
       </Section>
 
       {/* CTA Banner */}
-      <Section className="bg-gradient-to-r from-[#9C8974] to-[#1A1A1A] text-white">
+      <Section className="bg-[#1A1A1A] text-white">
         <div className="text-center">
-          <h2 className="mb-4 font-serif text-4xl font-bold">
+          <h2 className="mb-4 font-serif text-4xl font-bold text-[#E8E8DC]">
             Ready to Transform Your Look?
           </h2>
-          <p className="mb-8 text-lg text-gray-200">
+          <p className="mb-8 text-lg text-[#BBBAB3]">
             Book your appointment today and experience the luxury of perfect lashes
           </p>
           <Button
             asChild
             size="lg"
-            variant="secondary"
-            className="bg-white px-8 text-lg text-[#1A1A1A] hover:bg-gray-100"
+            className="bg-[#9C8974] px-8 text-lg text-white hover:bg-[#7A6B5A]"
           >
             <Link href="/booking">Schedule Now</Link>
           </Button>
