@@ -46,7 +46,7 @@ export function BookingConfirmation({ appointment }: BookingConfirmationProps) {
       `DTEND:${formatDateForCalendar(endDate)}`,
       `SUMMARY:${service.name} - LASH SPACE`,
       `DESCRIPTION:Your ${service.name} appointment at LASH SPACE`,
-      "LOCATION:123 Beauty Lane, Suite 4, Los Angeles, CA 90001",
+      "LOCATION:Jeddah, Al-Manar",
       "END:VEVENT",
       "END:VCALENDAR",
     ].join("\n");

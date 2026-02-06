@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Lash Space. Visit us in Los Angeles, call us, or send a message. We're here to help!",
+  description: "Get in touch with Lash Space. Contact us in Jeddah, call us, or send a message. We're here to help!",
 };
 
 export default function ContactPage() {

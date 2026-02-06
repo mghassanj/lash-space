@@ -47,7 +47,7 @@ export function generateServiceJsonLd(service: Service) {
     serviceType: "Beauty Service",
     areaServed: {
       "@type": "City",
-      name: "Los Angeles",
+      name: "Jeddah",
     },
     url: `${SITE_CONFIG.url}/services/${service.slug}`,
   };
@@ -64,16 +64,16 @@ export function generateLocalBusinessJsonLd() {
     email: SITE_CONFIG.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "123 Beauty Lane, Suite 4",
-      addressLocality: "Los Angeles",
-      addressRegion: "CA",
-      postalCode: "90001",
-      addressCountry: "US",
+      streetAddress: "Al-Manar",
+      addressLocality: "Jeddah",
+      addressRegion: "Makkah",
+      postalCode: "",
+      addressCountry: "SA",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "34.0522",
-      longitude: "-118.2437",
+      latitude: "21.5433",
+      longitude: "39.1728",
     },
     openingHoursSpecification: [
       {

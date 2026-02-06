@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "mega volume lashes",
     "lash lift",
     "beauty salon",
-    "Los Angeles",
+    "Jeddah",
     "premium lash extensions",
     "lash extension aftercare",
     "lash fills",
