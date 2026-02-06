@@ -15,8 +15,10 @@ async function main() {
     // Classic
     {
       name: "Classic",
+      nameAr: "كلاسيك",
       slug: "classic",
-      description: "One premium extension per natural lash for a naturally enhanced, elegant look. Perfect for first-timers.\n\nكلاسيك — رمش واحد على كل رمش طبيعي لإطلالة طبيعية وأنيقة. مثالي للمرة الأولى.",
+      description: "One premium extension per natural lash for a naturally enhanced, elegant look. Perfect for first-timers.",
+      descriptionAr: "رمش واحد على كل رمش طبيعي لإطلالة طبيعية وأنيقة. مثالي للمرة الأولى.",
       duration: 120,
       price: 300,
       category: "classic",
@@ -24,8 +26,10 @@ async function main() {
     },
     {
       name: "Classic Wispy",
+      nameAr: "كلاسيك ويسبي",
       slug: "classic-wispy",
-      description: "Classic technique with alternating lengths for a feathery, textured finish. Natural base with trendy wispy dimension.\n\nكلاسيك ويسبي — تقنية الكلاسيك بأطوال متنوعة لإطلالة ريشية مميزة.",
+      description: "Classic technique with alternating lengths for a feathery, textured finish. Natural base with trendy wispy dimension.",
+      descriptionAr: "تقنية الكلاسيك بأطوال متنوعة لإطلالة ريشية مميزة. قاعدة طبيعية مع بُعد ويسبي عصري.",
       duration: 150,
       price: 350,
       category: "classic",
@@ -33,8 +37,10 @@ async function main() {
     },
     {
       name: "Classic Half Set",
+      nameAr: "طرف كلاسيك",
       slug: "classic-half-set",
-      description: "Touch-up and fill for your classic set. Maintains fullness between appointments.\n\nطرف كلاسيك — تعبئة وصيانة لرموشك الكلاسيكية. يحافظ على الكثافة بين المواعيد.",
+      description: "Touch-up and fill for your classic set. Maintains fullness between appointments.",
+      descriptionAr: "تعبئة وصيانة لرموشك الكلاسيكية. يحافظ على الكثافة بين المواعيد.",
       duration: 60,
       price: 150,
       category: "classic",
@@ -43,8 +49,10 @@ async function main() {
     // Hybrid
     {
       name: "Hybrid",
+      nameAr: "هايبرد",
       slug: "hybrid",
-      description: "The best of both worlds — a stunning mix of classic and volume techniques for a textured, dimensional look.\n\nهايبرد — مزيج رائع من الكلاسيك والفوليوم لإطلالة مميزة بملمس وبُعد جميل.",
+      description: "The best of both worlds — a stunning mix of classic and volume techniques for a textured, dimensional look.",
+      descriptionAr: "مزيج رائع من الكلاسيك والفوليوم لإطلالة مميزة بملمس وبُعد جميل.",
       duration: 150,
       price: 400,
       category: "hybrid",
@@ -52,8 +60,10 @@ async function main() {
     },
     {
       name: "Hybrid Wispy",
+      nameAr: "هايبرد ويسبي",
       slug: "hybrid-wispy",
-      description: "Hybrid technique with wispy, feathery texture. Combines volume fans with classic spikes for an editorial finish.\n\nهايبرد ويسبي — تقنية الهايبرد مع ملمس ريشي. يجمع مراوح الفوليوم مع الكلاسيك لإطلالة عصرية.",
+      description: "Hybrid technique with wispy, feathery texture. Combines volume fans with classic spikes for an editorial finish.",
+      descriptionAr: "تقنية الهايبرد مع ملمس ريشي. يجمع مراوح الفوليوم مع الكلاسيك لإطلالة عصرية.",
       duration: 150,
       price: 450,
       category: "hybrid",
@@ -61,8 +71,10 @@ async function main() {
     },
     {
       name: "Hybrid Half Set",
+      nameAr: "هايبرد طرف",
       slug: "hybrid-half-set",
-      description: "Touch-up and fill for your hybrid set. Keeps that perfect textured look fresh.\n\nهايبرد طرف — تعبئة وصيانة لرموشك الهايبرد. يحافظ على الإطلالة المميزة.",
+      description: "Touch-up and fill for your hybrid set. Keeps that perfect textured look fresh.",
+      descriptionAr: "تعبئة وصيانة لرموشك الهايبرد. يحافظ على الإطلالة المميزة.",
       duration: 75,
       price: 200,
       category: "hybrid",
@@ -71,8 +83,10 @@ async function main() {
     // Volume
     {
       name: "Volume",
+      nameAr: "فوليوم",
       slug: "volume",
-      description: "Handmade fans of ultra-fine lashes applied to each natural lash. Creates dramatic, fluffy fullness. Our signature service.\n\nفوليوم — مراوح يدوية من رموش رقيقة على كل رمش طبيعي. كثافة دراماتيكية وناعمة. خدمتنا المميزة.",
+      description: "Handmade fans of ultra-fine lashes applied to each natural lash. Creates dramatic, fluffy fullness. Our signature service.",
+      descriptionAr: "مراوح يدوية من رموش رقيقة على كل رمش طبيعي. كثافة دراماتيكية وناعمة. خدمتنا المميزة.",
       duration: 180,
       price: 550,
       category: "volume",
@@ -80,8 +94,10 @@ async function main() {
     },
     {
       name: "Volume Wispy",
+      nameAr: "فوليوم ويسبي",
       slug: "volume-wispy",
-      description: "Full volume with alternating wispy spikes for maximum drama with textured dimension. The ultimate glam look.\n\nفوليوم ويسبي — فوليوم كامل مع أطراف ريشية متنوعة لأقصى دراما مع بُعد مميز. إطلالة الفخامة.",
+      description: "Full volume with alternating wispy spikes for maximum drama with textured dimension. The ultimate glam look.",
+      descriptionAr: "فوليوم كامل مع أطراف ريشية متنوعة لأقصى دراما مع بُعد مميز. إطلالة الفخامة.",
       duration: 180,
       price: 600,
       category: "volume",
@@ -89,8 +105,10 @@ async function main() {
     },
     {
       name: "Volume Half Set",
+      nameAr: "فوليوم طرف",
       slug: "volume-half-set",
-      description: "Touch-up and fill for your volume set. Maintains that full, fluffy drama between appointments.\n\nفوليوم طرف — تعبئة وصيانة لرموشك الفوليوم. يحافظ على الكثافة والنعومة.",
+      description: "Touch-up and fill for your volume set. Maintains that full, fluffy drama between appointments.",
+      descriptionAr: "تعبئة وصيانة لرموشك الفوليوم. يحافظ على الكثافة والنعومة.",
       duration: 90,
       price: 275,
       category: "volume",
@@ -99,8 +117,10 @@ async function main() {
     // Wet Set
     {
       name: "Wet Set",
+      nameAr: "ويت سيت",
       slug: "wet-set",
-      description: "Sleek, defined, and glossy — the wet look creates a stunning editorial effect. Tightly closed fans for a spiky, separated look.\n\nويت سيت — إطلالة أنيقة ولامعة بأسلوب المجلات. مراوح مغلقة بإحكام لمظهر محدد ولافت.",
+      description: "Sleek, defined, and glossy — the wet look creates a stunning editorial effect. Tightly closed fans for a spiky, separated look.",
+      descriptionAr: "إطلالة أنيقة ولامعة بأسلوب المجلات. مراوح مغلقة بإحكام لمظهر محدد ولافت.",
       duration: 150,
       price: 450,
       category: "wet-set",
@@ -108,8 +128,10 @@ async function main() {
     },
     {
       name: "Wet Set Wispy",
+      nameAr: "ويت سيت ويسبي",
       slug: "wet-set-wispy",
-      description: "Wet set technique combined with wispy spikes. Glossy, defined base with feathery texture for a unique editorial look.\n\nويت سيت ويسبي — تقنية الويت سيت مع أطراف ريشية. قاعدة لامعة ومحددة مع ملمس ريشي لإطلالة فريدة.",
+      description: "Wet set technique combined with wispy spikes. Glossy, defined base with feathery texture for a unique editorial look.",
+      descriptionAr: "تقنية الويت سيت مع أطراف ريشية. قاعدة لامعة ومحددة مع ملمس ريشي لإطلالة فريدة.",
       duration: 150,
       price: 500,
       category: "wet-set",
@@ -118,8 +140,10 @@ async function main() {
     // Weekly
     {
       name: "Weekly Lashes",
+      nameAr: "رموش أسبوعية",
       slug: "weekly-lashes",
-      description: "Quick, beautiful temporary lash enhancement perfect for events, parties, or a weekly glam boost. Comfortable wear for up to 7 days.\n\nرموش أسبوعية مؤقتة مثالية للمناسبات والحفلات. مريحة لمدة تصل إلى ٧ أيام.",
+      description: "Quick, beautiful temporary lash enhancement perfect for events, parties, or a weekly glam boost. Comfortable wear for up to 7 days.",
+      descriptionAr: "رموش مؤقتة مثالية للمناسبات والحفلات. مريحة لمدة تصل إلى ٧ أيام.",
       duration: 45,
       price: 120,
       category: "weekly",
@@ -128,8 +152,10 @@ async function main() {
     // Other
     {
       name: "Lash Removal",
+      nameAr: "إزالة الرموش",
       slug: "lash-removal",
-      description: "Safe, professional removal of existing lash extensions using a gentle dissolving technique. Zero damage to your natural lashes.\n\nإزالة احترافية وآمنة للرموش بدون أي ضرر للرموش الطبيعية.",
+      description: "Safe, professional removal of existing lash extensions using a gentle dissolving technique. Zero damage to your natural lashes.",
+      descriptionAr: "إزالة احترافية وآمنة للرموش بدون أي ضرر للرموش الطبيعية.",
       duration: 30,
       price: 80,
       category: "other",

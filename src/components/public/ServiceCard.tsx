@@ -17,7 +17,9 @@ import { useI18n } from "@/lib/i18n";
 interface ServiceCardProps {
   id: string;
   name: string;
+  nameAr?: string;
   description: string | null;
+  descriptionAr?: string;
   duration: number;
   price: number;
   category: string;
@@ -27,13 +29,17 @@ interface ServiceCardProps {
 export function ServiceCard({
   id,
   name,
+  nameAr,
   description,
+  descriptionAr,
   duration,
   price,
   category,
   featured,
 }: ServiceCardProps) {
   const { t, locale } = useI18n();
+  const displayName = locale === "ar" && nameAr ? nameAr : name;
+  const displayDesc = locale === "ar" && descriptionAr ? descriptionAr : description;
 
   return (
     <motion.div
@@ -57,9 +63,9 @@ export function ServiceCard({
               </Badge>
             )}
           </div>
-          <CardTitle className="font-serif text-2xl">{name}</CardTitle>
+          <CardTitle className="font-serif text-2xl">{displayName}</CardTitle>
           <CardDescription className="line-clamp-2">
-            {description}
+            {displayDesc}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

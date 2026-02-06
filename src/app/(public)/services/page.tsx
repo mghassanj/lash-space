@@ -28,7 +28,9 @@ export default async function ServicesPage() {
       .map((s) => ({
         id: s.id,
         name: s.name,
+        nameAr: s.nameAr,
         description: s.description,
+        descriptionAr: s.descriptionAr,
         duration: s.duration,
         price: s.price,
       })),

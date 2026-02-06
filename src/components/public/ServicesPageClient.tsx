@@ -13,7 +13,9 @@ import { useI18n } from "@/lib/i18n";
 interface ServiceData {
   id: string;
   name: string;
+  nameAr: string;
   description: string | null;
+  descriptionAr: string;
   duration: number;
   price: number;
 }
@@ -80,7 +82,9 @@ export function ServicesPageClient({
                 key={service.id}
                 id={service.id}
                 name={service.name}
+                nameAr={service.nameAr}
                 description={service.description}
+                descriptionAr={service.descriptionAr}
                 duration={service.duration}
                 price={service.price}
                 category={locale === "ar" ? category.nameAr : category.name}
