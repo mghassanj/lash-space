@@ -79,15 +79,21 @@ export default function AboutPage() {
           <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
             {ar ? (
               <>
-                <p>لاش سبيس ولدت من شغف بالجمال ورغبة في تقديم فن الرموش الفاخر لجدة. ما بدأ كحلم تحوّل إلى اسم موثوق في عالم رموش الإكستنشن في حي المنار.</p>
-                <p>كاستوديو منزلي، نقدم شيء ما تقدر تقدمه الصالونات التقليدية — تجربة خاصة وشخصية بالكامل. كل موعد هو جلسة فردية تعطيك الاهتمام الكامل اللي تستحقينه. بدون استعجال، بدون إلهاء — فقط فن احترافي في بيئة مريحة.</p>
-                <p>نؤمن إن الرموش الجميلة لازم تكون مذهلة وطبيعية وآمنة لعيونك. لذلك نستثمر في أفضل المنتجات ونطور تقنياتنا باستمرار لنتائج تفوق التوقعات.</p>
+                <p>لاش سبيس وُلد من شغف صادق بالجمال، ومن إيمان إن كل أنثى تستحق تجربة تُشبهها — مو مجرد خدمة.</p>
+                <p>هنا، الرموش ما تُركّب… تُصمَّم بعناية لتعكس شخصيتك، إحساسك، والطريقة اللي تحبين تشوفي نفسك فيها.</p>
+                <p>نقدّم تجربة خاصة وفردية بالكامل، مساحة هادئة تبتعد عن الاستعجال والضجيج، وتقرّبك من لحظة اهتمام حقيقي بنفسك.</p>
+                <p>كل موعد هو وقت مخصص لك، بتفاصيل محسوبة، ولمسة فنية تحترم جمالك الطبيعي وتعرف متى تبرزه ومتى تجرؤ عليه.</p>
+                <p>نحن متخصصون في تصميم وتركيب الرموش بأساليب متنوعة — من الناعم والطبيعي إلى الكثيف والجريء — باستخدام خامات عالية الجودة وتقنيات آمنة تمنحك نتائج تدوم وتشعرك بالثقة كل يوم.</p>
+                <p className="text-[#9C8974] font-medium italic">في لاش سبيس، نؤمن إن الجمال مو شكل واحد، وإن الرموش الحلوة هي اللي تخليك تحبين انعكاسك في المرآة أكثر. وهذا هو وعدنا في كل جلسة.</p>
               </>
             ) : (
               <>
-                <p>Lash Space was born from a passion for beauty and a desire to bring premium lash artistry to Jeddah. What started as a dream has grown into a trusted name for eyelash extensions in the Al-Manar neighborhood.</p>
-                <p>As a home-based studio, we offer something that traditional salons can&apos;t — a truly private, personalized experience. Every appointment is one-on-one, giving you the undivided attention you deserve.</p>
-                <p>We believe that beautiful lashes shouldn&apos;t just look amazing — they should feel natural and be safe for your eyes. That&apos;s why we invest in the best products and continuously develop our techniques.</p>
+                <p>Lash Space was born from a genuine passion for beauty, and from a belief that every woman deserves an experience that reflects who she is — not just a service.</p>
+                <p>Here, lashes aren&apos;t just applied… they&apos;re carefully designed to reflect your personality, your essence, and the way you love to see yourself.</p>
+                <p>We offer a fully private, one-on-one experience — a calm space away from the rush and noise, bringing you closer to a moment of genuine self-care.</p>
+                <p>Every appointment is time dedicated to you, with calculated details and an artistic touch that respects your natural beauty and knows when to enhance it and when to be bold.</p>
+                <p>We specialize in designing and applying lashes in diverse styles — from soft and natural to full and bold — using high-quality materials and safe techniques that give you lasting results and confidence every day.</p>
+                <p className="text-[#9C8974] font-medium italic">At Lash Space, we believe beauty isn&apos;t one-size-fits-all, and that beautiful lashes are the ones that make you love your reflection even more. That&apos;s our promise in every session.</p>
               </>
             )}
           </div>

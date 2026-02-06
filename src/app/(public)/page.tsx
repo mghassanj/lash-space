@@ -309,6 +309,41 @@ export default function HomePage() {
       {/* Instagram Feed */}
       <InstagramFeed />
 
+      {/* About Us — Detailed */}
+      <Section className="bg-[#E8E8DC]/30">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-8 font-serif text-4xl font-bold text-[#1A1A1A]">
+            {locale === "ar" ? "عنّا" : "About Us"}
+          </h2>
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            {locale === "ar" ? (
+              <>
+                <p>لاش سبيس وُلد من شغف صادق بالجمال، ومن إيمان إن كل أنثى تستحق تجربة تُشبهها — مو مجرد خدمة.</p>
+                <p>هنا، الرموش ما تُركّب… تُصمَّم بعناية لتعكس شخصيتك، إحساسك، والطريقة اللي تحبين تشوفي نفسك فيها.</p>
+                <p>نقدّم تجربة خاصة وفردية بالكامل، مساحة هادئة تبتعد عن الاستعجال والضجيج، وتقرّبك من لحظة اهتمام حقيقي بنفسك.</p>
+                <p>كل موعد هو وقت مخصص لك، بتفاصيل محسوبة، ولمسة فنية تحترم جمالك الطبيعي وتعرف متى تبرزه ومتى تجرؤ عليه.</p>
+                <p>نحن متخصصون في تصميم وتركيب الرموش بأساليب متنوعة — من الناعم والطبيعي إلى الكثيف والجريء — باستخدام خامات عالية الجودة وتقنيات آمنة تمنحك نتائج تدوم وتشعرك بالثقة كل يوم.</p>
+                <p className="text-[#9C8974] font-medium italic">في لاش سبيس، نؤمن إن الجمال مو شكل واحد، وإن الرموش الحلوة هي اللي تخليك تحبين انعكاسك في المرآة أكثر. وهذا هو وعدنا في كل جلسة.</p>
+              </>
+            ) : (
+              <>
+                <p>Lash Space was born from a genuine passion for beauty, and from a belief that every woman deserves an experience that reflects who she is — not just a service.</p>
+                <p>Here, lashes aren&apos;t just applied… they&apos;re carefully designed to reflect your personality, your essence, and the way you love to see yourself.</p>
+                <p>We offer a fully private, one-on-one experience — a calm space away from the rush and noise, bringing you closer to a moment of genuine self-care.</p>
+                <p>Every appointment is time dedicated to you, with calculated details and an artistic touch that respects your natural beauty and knows when to enhance it and when to be bold.</p>
+                <p>We specialize in designing and applying lashes in diverse styles — from soft and natural to full and bold — using high-quality materials and safe techniques that give you lasting results and confidence every day.</p>
+                <p className="text-[#9C8974] font-medium italic">At Lash Space, we believe beauty isn&apos;t one-size-fits-all, and that beautiful lashes are the ones that make you love your reflection even more. That&apos;s our promise in every session.</p>
+              </>
+            )}
+          </div>
+          <div className="mt-8">
+            <Link href="/about" className="text-[#9C8974] font-medium hover:text-[#7A6B5A] underline underline-offset-4">
+              {locale === "ar" ? "اقرأي المزيد عنّا ←" : "Read more about us →"}
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       {/* CTA Banner */}
       <Section className="bg-[#1A1A1A] text-white">
         <div className="text-center">
