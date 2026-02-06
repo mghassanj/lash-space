@@ -33,6 +33,8 @@ export default async function ServicesPage() {
         descriptionAr: s.descriptionAr,
         duration: s.duration,
         price: s.price,
+        isAddOn: s.isAddOn,
+        isRetouch: s.isRetouch,
       })),
   })).filter((category) => category.services.length > 0);
 

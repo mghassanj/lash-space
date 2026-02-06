@@ -29,9 +29,11 @@ model Service {
   descriptionAr  String        @default("")
   duration       Int
   price          Float
-  category       String
+  category       String        // monthly, addon, half_set, other, retouch
   image          String?
   isActive       Boolean       @default(true)
+  isAddOn        Boolean       @default(false)
+  isRetouch      Boolean       @default(false)
   sortOrder      Int           @default(0)
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt

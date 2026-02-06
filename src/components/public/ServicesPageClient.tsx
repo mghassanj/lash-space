@@ -18,6 +18,8 @@ interface ServiceData {
   descriptionAr: string;
   duration: number;
   price: number;
+  isAddOn: boolean;
+  isRetouch: boolean;
 }
 
 interface CategoryData {
@@ -87,8 +89,10 @@ export function ServicesPageClient({
                 descriptionAr={service.descriptionAr}
                 duration={service.duration}
                 price={service.price}
+                isAddOn={service.isAddOn}
+                isRetouch={service.isRetouch}
                 category={locale === "ar" ? category.nameAr : category.name}
-                featured={service.name === "Volume"}
+                featured={service.name.includes("Volume Monthly")}
               />
             ))}
           </div>
