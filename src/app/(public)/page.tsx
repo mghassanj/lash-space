@@ -1,6 +1,8 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Award, Heart, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +15,112 @@ import {
 import { Section } from "@/components/public/Section";
 import { InstagramFeed } from "@/components/public/InstagramFeed";
 import { useI18n } from "@/lib/i18n";
+
+const heroSlides = [
+  {
+    titleKey: "hero.slide1.title",
+    descKey: "hero.slide1.description",
+    bg: "from-[#9C8974]/40 via-[#1A1A1A]/60 to-[#1A1A1A]",
+    image: "/images/hero-1.jpg",
+  },
+  {
+    titleKey: "hero.slide2.title",
+    descKey: "hero.slide2.description",
+    bg: "from-[#BAB0A5]/30 via-[#1A1A1A]/60 to-[#1A1A1A]",
+    image: "/images/hero-2.jpg",
+  },
+  {
+    titleKey: "hero.slide3.title",
+    descKey: "hero.slide3.description",
+    bg: "from-[#898A73]/30 via-[#1A1A1A]/60 to-[#1A1A1A]",
+    image: "/images/hero-3.jpg",
+  },
+];
+
+function HeroSection({ t, locale }: { t: (key: string) => string; locale: string }) {
+  const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % heroSlides.length);
+      setFade(true);
+    }, 400);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  const slide = heroSlides[current];
+
+  return (
+    <>
+      {/* Part 1: Animated Slider */}
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-[#1A1A1A] md:min-h-[70vh]">
+        {/* Background images */}
+        {heroSlides.map((s, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 bg-gradient-to-b ${s.bg} transition-opacity duration-700 ${i === current ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+
+        {/* Content */}
+        <div className="container relative z-10 mx-auto px-4 text-center">
+          <div className={`transition-all duration-500 ${fade ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.15em] text-[#BAB0A5] md:tracking-[0.3em]">
+              LASH SPACE
+            </p>
+            <h1 className="mb-6 font-serif text-4xl font-bold text-[#E8E8DC] md:text-6xl">
+              {t(slide.titleKey)}
+            </h1>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#BBBAB3] md:text-lg">
+              {t(slide.descKey)}
+            </p>
+          </div>
+
+          {/* Slide indicators */}
+          <div className="mt-8 flex items-center justify-center gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setFade(false); setTimeout(() => { setCurrent(i); setFade(true); }, 400); }}
+                className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-[#9C8974]" : "w-2 bg-[#BAB0A5]/40 hover:bg-[#BAB0A5]/60"}`}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Part 2: Fixed CTA */}
+      <section className="bg-[#1A1A1A] py-10 border-t border-[#BAB0A5]/10">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#9C8974] px-8 text-lg text-white hover:bg-[#7A6B5A]"
+            >
+              <Link href="/booking">{t("hero.bookAppointment")}</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-[#BAB0A5]/50 bg-transparent px-8 text-lg text-[#E8E8DC] hover:border-[#9C8974] hover:bg-[#9C8974]/10"
+            >
+              <Link href="/services">{t("hero.exploreServices")}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
 
 export default function HomePage() {
   const { t, locale } = useI18n();
@@ -94,40 +202,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#1A1A1A]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#9C8974]/30 via-[#BAB0A5]/10 to-[#1A1A1A]" />
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.15em] text-[#BAB0A5] md:tracking-[0.3em]">
-            {t("hero.subtitle")}
-          </p>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-[#E8E8DC] md:text-7xl">
-            {t("hero.title1")}
-            <br />
-            {t("hero.title2")}
-          </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-[#BBBAB3] md:text-xl">
-            {t("hero.description")}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#9C8974] px-8 text-lg text-white hover:bg-[#7A6B5A]"
-            >
-              <Link href="/booking">{t("hero.bookAppointment")}</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-[#BAB0A5]/50 bg-transparent px-8 text-lg text-[#E8E8DC] hover:border-[#9C8974] hover:bg-[#9C8974]/10"
-            >
-              <Link href="/services">{t("hero.exploreServices")}</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section — Slider + CTA */}
+      <HeroSection t={t} locale={locale} />
 
       {/* Featured Services */}
       <Section className="bg-white">

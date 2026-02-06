@@ -31,13 +31,21 @@ const translations: Record<string, Record<Locale, string>> = {
   "nav.contact": { ar: "تواصلي معنا", en: "Contact" },
   "nav.bookNow": { ar: "احجزي الآن", en: "Book Now" },
 
-  // Hero
-  "hero.subtitle": { ar: "مساحة صُممت لراحتك و جمالك", en: "A Space Designed for Your Comfort & Beauty" },
-  "hero.title1": { ar: "ارتقي بجمالك", en: "Elevate Your" },
-  "hero.title2": { ar: "الطبيعي", en: "Natural Beauty" },
-  "hero.description": {
-    ar: "مرحبًا بك في مساحتك الخاصة التي صُممت لتجمع بين الفخامة، الراحة، والجمال الطبيعي",
-    en: "Welcome to your own space, designed to bring together luxury, comfort, and natural beauty",
+  // Hero Slider
+  "hero.slide1.title": { ar: "ترحيب", en: "Welcome" },
+  "hero.slide1.description": {
+    ar: "مرحباً بك في مساحتك الخاصة التي صُممت بعناية لتجمع بين الفخامة، الراحة، والجمال الطبيعي.",
+    en: "Welcome to your own space, carefully designed to bring together luxury, comfort, and natural beauty.",
+  },
+  "hero.slide2.title": { ar: "من نحن", en: "About Us" },
+  "hero.slide2.description": {
+    ar: "نحن متخصصون في تصميم وتركيب الرموش بأسلوب يبرز جمال عينيك ويعكس شخصيتك، باستخدام خامات عالية الجودة وتقنيات آمنة تمنحك نتائج تدوم وتجعلك متألقة كل يوم.",
+    en: "We specialize in designing and applying lashes in a style that highlights the beauty of your eyes and reflects your personality, using high-quality materials and safe techniques that give you lasting results.",
+  },
+  "hero.slide3.title": { ar: "هدفنا", en: "Our Mission" },
+  "hero.slide3.description": {
+    ar: "نؤمن أن كل سيدة تستحق أن تشعر بالثقة والجمال في أجواء مريحة وهادئة، بعيداً عن صخب الحياة اليومية. هدفنا هو أن تكون تجربتك معنا أكثر من مجرد موعد تجميلي... بل لحظة خاصة لك تستحقينها.",
+    en: "We believe every woman deserves to feel confident and beautiful in a comfortable, peaceful atmosphere, away from the hustle of daily life. Our goal is for your experience with us to be more than just a beauty appointment... but a special moment you deserve.",
   },
   "hero.bookAppointment": { ar: "احجزي موعدك", en: "Book Your Appointment" },
   "hero.exploreServices": { ar: "استكشفي الخدمات", en: "Explore Services" },
