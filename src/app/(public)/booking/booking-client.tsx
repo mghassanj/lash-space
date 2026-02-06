@@ -8,14 +8,19 @@ import { CustomerForm, CustomerFormData } from "@/components/booking/customer-fo
 import { BookingSummary } from "@/components/booking/booking-summary";
 import { BookingConfirmation } from "@/components/booking/booking-confirmation";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/lib/i18n";
 
 interface Service {
   id: string;
   name: string;
+  nameAr: string | null;
   description: string;
+  descriptionAr: string | null;
   duration: number;
   price: number;
   category: string;
+  isAddOn: boolean;
+  isRetouch: boolean;
 }
 
 interface BookingClientProps {
@@ -23,6 +28,7 @@ interface BookingClientProps {
 }
 
 export function BookingClient({ services }: BookingClientProps) {
+  const { t, locale } = useI18n();
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -99,6 +105,16 @@ export function BookingClient({ services }: BookingClientProps) {
   }
 
   return (
+    <>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
+          {t("booking.title")}
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          {t("booking.subtitle")}
+        </p>
+      </div>
+
     <BookingWizard currentStep={currentStep} totalSteps={4}>
       {/* Step 1: Select Service */}
       {currentStep === 1 && (
@@ -114,7 +130,7 @@ export function BookingClient({ services }: BookingClientProps) {
               disabled={!selectedServiceId}
               className="bg-[#9C8974] hover:bg-[#B07E5C] text-white px-8"
             >
-              Continue
+              {locale === "ar" ? "التالي" : "Continue"}
             </Button>
           </div>
         </div>
@@ -136,14 +152,14 @@ export function BookingClient({ services }: BookingClientProps) {
               onClick={() => setCurrentStep(1)}
               className="flex-1 border-gray-300"
             >
-              Back
+              {locale === "ar" ? "رجوع" : "Back"}
             </Button>
             <Button
               onClick={handleNextFromDateTime}
               disabled={!selectedDate || !selectedTime}
               className="flex-1 bg-[#9C8974] hover:bg-[#B07E5C] text-white"
             >
-              Continue
+              {locale === "ar" ? "التالي" : "Continue"}
             </Button>
           </div>
         </div>
@@ -175,5 +191,6 @@ export function BookingClient({ services }: BookingClientProps) {
           />
         )}
     </BookingWizard>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 
 interface BookingWizardProps {
   currentStep: number;
@@ -8,18 +9,20 @@ interface BookingWizardProps {
   children: React.ReactNode;
 }
 
-const stepTitles = [
-  "Select Service",
-  "Choose Date & Time",
-  "Your Details",
-  "Confirmation",
-];
+const stepTitles: Record<string, { ar: string; en: string }> = {
+  "1": { ar: "اختيار الخدمة", en: "Select Service" },
+  "2": { ar: "اختيار الموعد", en: "Choose Date & Time" },
+  "3": { ar: "بياناتك", en: "Your Details" },
+  "4": { ar: "التأكيد", en: "Confirmation" },
+};
 
 export function BookingWizard({
   currentStep,
   totalSteps,
   children,
 }: BookingWizardProps) {
+  const { locale } = useI18n();
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       {/* Progress Indicator */}
@@ -50,16 +53,16 @@ export function BookingWizard({
           ))}
         </div>
         <p className="text-center text-lg font-medium text-[#1A1A1A]">
-          {stepTitles[currentStep - 1]}
+          {stepTitles[String(currentStep)]?.[locale] || ""}
         </p>
       </div>
 
       {/* Content */}
       <motion.div
         key={currentStep}
-        initial={{ opacity: 0, x: 20 }}
+        initial={{ opacity: 0, x: locale === "ar" ? -20 : 20 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
+        exit={{ opacity: 0, x: locale === "ar" ? 20 : -20 }}
         transition={{ duration: 0.3 }}
       >
         {children}

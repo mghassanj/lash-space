@@ -20,10 +20,14 @@ async function getServices() {
   return services.map((service) => ({
     id: service.id,
     name: service.name,
+    nameAr: service.nameAr,
     description: service.description,
+    descriptionAr: service.descriptionAr,
     duration: service.duration,
     price: service.price,
     category: service.category,
+    isAddOn: service.isAddOn,
+    isRetouch: service.isRetouch,
   }));
 }
 
@@ -33,15 +37,7 @@ export default async function BookingPage() {
   return (
     <div className="min-h-screen bg-[#E8E8DC] py-12">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
-            Book Your Appointment
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Select your desired service, choose a convenient time, and let us help you
-            elevate your natural beauty.
-          </p>
-        </div>
+        {/* Header is rendered inside BookingClient for i18n support */}
 
         <BookingClient services={services} />
 
