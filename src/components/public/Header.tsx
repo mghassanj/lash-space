@@ -76,17 +76,17 @@ export function Header() {
                 />
               </SheetTitle>
             </SheetHeader>
-            <nav className="mt-8 flex flex-col gap-4">
+            <nav className="mt-8 flex flex-col gap-1 px-2">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "text-lg font-medium transition-colors hover:text-[#9C8974]",
+                    "rounded-md px-3 py-2.5 text-base font-medium transition-colors hover:bg-[#E8E8DC] hover:text-[#9C8974]",
                     pathname === link.href
-                      ? "text-[#9C8974]"
-                      : "text-muted-foreground"
+                      ? "bg-[#E8E8DC]/50 text-[#9C8974]"
+                      : "text-[#1A1A1A]"
                   )}
                 >
                   {link.label}
