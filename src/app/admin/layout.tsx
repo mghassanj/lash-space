@@ -7,6 +7,7 @@ import {
   Sparkles, 
   BarChart3, 
   Settings,
+  Package,
   Menu,
   LogOut
 } from "lucide-react";
@@ -25,6 +26,7 @@ const navLinks = [
   { href: "/admin/appointments", label: "Appointments", icon: Calendar },
   { href: "/admin/customers", label: "Customers", icon: Users },
   { href: "/admin/services", label: "Services", icon: Sparkles },
+  { href: "/admin/inventory", label: "Inventory", icon: Package },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
