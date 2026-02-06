@@ -177,7 +177,7 @@ export default function ContactPage() {
             pricing, and aftercare.
           </p>
           <a
-            href="/pricing#faq"
+            href="/services#faq"
             className="inline-flex h-11 items-center justify-center rounded-md bg-[#9C8974] px-8 text-sm font-medium text-white transition-colors hover:bg-[#7A6B5A]"
           >
             View FAQ

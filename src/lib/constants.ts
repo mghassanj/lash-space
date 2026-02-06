@@ -90,9 +90,8 @@ export const SERVICE_CATEGORIES = [
 
 export const NAV_LINKS = [
   { href: "/", label: "Home", labelAr: "الرئيسية" },
-  { href: "/services", label: "Services", labelAr: "الخدمات" },
+  { href: "/services", label: "Services & Pricing", labelAr: "الخدمات والأسعار" },
   { href: "/gallery", label: "Gallery", labelAr: "المعرض" },
-  { href: "/pricing", label: "Pricing", labelAr: "الأسعار" },
   { href: "/about", label: "About", labelAr: "عنّا" },
   { href: "/blog", label: "Blog", labelAr: "المدونة" },
   { href: "/contact", label: "Contact", labelAr: "تواصلي معنا" },

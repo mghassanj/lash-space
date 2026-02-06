@@ -1,11 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { Clock, DollarSign } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Clock } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 
 interface ServiceCardProps {
   id: string;
@@ -26,6 +33,8 @@ export function ServiceCard({
   category,
   featured,
 }: ServiceCardProps) {
+  const { t, locale } = useI18n();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -44,7 +53,7 @@ export function ServiceCard({
             </Badge>
             {featured && (
               <Badge className="bg-[#9C8974] text-white hover:bg-[#7A6B5A]">
-                Popular
+                {t("common.popular")}
               </Badge>
             )}
           </div>
@@ -57,18 +66,19 @@ export function ServiceCard({
           <div className="flex items-center justify-between text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4 text-[#9C8974]" />
-              <span>{duration} min</span>
+              <span>
+                {duration} {t("services.min")}
+              </span>
             </div>
             <div className="flex items-center gap-1 font-semibold text-foreground">
-              <DollarSign className="h-4 w-4 text-[#9C8974]" />
-              <span className="text-lg">{price}</span>
+              <span className="text-lg">
+                {price}{" "}
+                <span className="text-sm text-[#9C8974]">{t("common.sar")}</span>
+              </span>
             </div>
           </div>
-          <Button
-            asChild
-            className="w-full bg-[#9C8974] hover:bg-[#7A6B5A]"
-          >
-            <Link href={`/booking?service=${id}`}>Book Now</Link>
+          <Button asChild className="w-full bg-[#9C8974] hover:bg-[#7A6B5A]">
+            <Link href={`/booking?service=${id}`}>{t("nav.bookNow")}</Link>
           </Button>
         </CardContent>
       </Card>
