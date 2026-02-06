@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import { Section } from "@/components/public/Section";
 import { ServiceCard } from "@/components/public/ServiceCard";
