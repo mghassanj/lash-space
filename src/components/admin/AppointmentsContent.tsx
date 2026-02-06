@@ -29,6 +29,17 @@ function getStatusColor(status: string) {
   return colors[status] || colors.pending;
 }
 
+function getStatusLabel(status: string) {
+  const labels: Record<string, string> = {
+    pending: "معلق",
+    confirmed: "مؤكد",
+    completed: "مكتمل",
+    cancelled: "ملغي",
+    "no-show": "لم يحضر",
+  };
+  return labels[status] || status;
+}
+
 export default function AppointmentsContent() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,8 +95,8 @@ export default function AppointmentsContent() {
   return (
     <Tabs defaultValue="list" className="space-y-4">
       <TabsList>
-        <TabsTrigger value="list">List View</TabsTrigger>
-        <TabsTrigger value="calendar">Calendar View</TabsTrigger>
+        <TabsTrigger value="list">عرض القائمة</TabsTrigger>
+        <TabsTrigger value="calendar">عرض التقويم</TabsTrigger>
       </TabsList>
 
       <TabsContent value="list" className="space-y-4">
@@ -95,19 +106,19 @@ export default function AppointmentsContent() {
             <div className="flex items-center gap-4">
               <div className="flex-1">
                 <label className="text-sm font-medium text-gray-700 mb-2 block">
-                  Filter by Status
+                  تصفية حسب الحالة
                 </label>
                 <Select value={statusFilter} onValueChange={setStatusFilter}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                    <SelectItem value="confirmed">Confirmed</SelectItem>
-                    <SelectItem value="completed">Completed</SelectItem>
-                    <SelectItem value="cancelled">Cancelled</SelectItem>
-                    <SelectItem value="no-show">No-show</SelectItem>
+                    <SelectItem value="all">الكل</SelectItem>
+                    <SelectItem value="pending">معلق</SelectItem>
+                    <SelectItem value="confirmed">مؤكد</SelectItem>
+                    <SelectItem value="completed">مكتمل</SelectItem>
+                    <SelectItem value="cancelled">ملغي</SelectItem>
+                    <SelectItem value="no-show">لم يحضر</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -119,21 +130,21 @@ export default function AppointmentsContent() {
         <Card>
           <CardContent className="p-0">
             {loading ? (
-              <div className="p-8 text-center text-gray-500">Loading appointments...</div>
+              <div className="p-8 text-center text-gray-500">جاري تحميل المواعيد...</div>
             ) : paginatedAppointments.length === 0 ? (
-              <div className="p-8 text-center text-gray-500">No appointments found.</div>
+              <div className="p-8 text-center text-gray-500">لا توجد مواعيد.</div>
             ) : (
               <>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
-                        <th className="text-left py-3 px-4 font-medium text-gray-600">Date/Time</th>
-                        <th className="text-left py-3 px-4 font-medium text-gray-600">Customer</th>
-                        <th className="text-left py-3 px-4 font-medium text-gray-600">Service</th>
-                        <th className="text-left py-3 px-4 font-medium text-gray-600">Status</th>
-                        <th className="text-right py-3 px-4 font-medium text-gray-600">Price</th>
-                        <th className="text-right py-3 px-4 font-medium text-gray-600">Actions</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">التاريخ والوقت</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">العميل</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">الخدمة</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">الحالة</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">السعر</th>
+                        <th className="text-right py-3 px-4 font-medium text-gray-600">الإجراءات</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -151,11 +162,11 @@ export default function AppointmentsContent() {
                           <td className="py-3 px-4 text-gray-600">{appt.service.name}</td>
                           <td className="py-3 px-4">
                             <Badge variant="outline" className={getStatusColor(appt.status)}>
-                              {appt.status}
+                              {getStatusLabel(appt.status)}
                             </Badge>
                           </td>
                           <td className="py-3 px-4 text-right font-medium">
-                            ${appt.totalPrice.toFixed(2)}
+                            {appt.totalPrice.toFixed(2)} ر.س
                           </td>
                           <td className="py-3 px-4">
                             <div className="flex items-center justify-end gap-2">
@@ -167,8 +178,8 @@ export default function AppointmentsContent() {
                                     className="h-8"
                                     onClick={() => updateAppointmentStatus(appt.id, "confirmed")}
                                   >
-                                    <Check className="w-3 h-3 mr-1" />
-                                    Confirm
+                                    <Check className="w-3 h-3 ml-1" />
+                                    تأكيد
                                   </Button>
                                   <Button
                                     size="sm"
@@ -176,8 +187,8 @@ export default function AppointmentsContent() {
                                     className="h-8 text-red-600 hover:text-red-700"
                                     onClick={() => updateAppointmentStatus(appt.id, "cancelled")}
                                   >
-                                    <X className="w-3 h-3 mr-1" />
-                                    Cancel
+                                    <X className="w-3 h-3 ml-1" />
+                                    إلغاء
                                   </Button>
                                 </>
                               )}
@@ -188,7 +199,7 @@ export default function AppointmentsContent() {
                                   className="h-8"
                                   onClick={() => updateAppointmentStatus(appt.id, "completed")}
                                 >
-                                  Complete
+                                  إتمام
                                 </Button>
                               )}
                             </div>
@@ -203,7 +214,7 @@ export default function AppointmentsContent() {
                 {totalPages > 1 && (
                   <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200">
                     <div className="text-sm text-gray-500">
-                      Page {currentPage} of {totalPages}
+                      صفحة {currentPage} من {totalPages}
                     </div>
                     <div className="flex gap-2">
                       <Button
@@ -212,7 +223,7 @@ export default function AppointmentsContent() {
                         disabled={currentPage === 1}
                         onClick={() => setCurrentPage((p) => p - 1)}
                       >
-                        Previous
+                        السابق
                       </Button>
                       <Button
                         size="sm"
@@ -220,7 +231,7 @@ export default function AppointmentsContent() {
                         disabled={currentPage === totalPages}
                         onClick={() => setCurrentPage((p) => p + 1)}
                       >
-                        Next
+                        التالي
                       </Button>
                     </div>
                   </div>
@@ -236,9 +247,9 @@ export default function AppointmentsContent() {
           <CardContent className="p-8">
             <div className="flex flex-col items-center justify-center text-center py-12">
               <CalendarIcon className="w-12 h-12 text-gray-300 mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Calendar View</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">عرض التقويم</h3>
               <p className="text-gray-500">
-                Calendar view coming soon. Use the list view to manage appointments.
+                عرض التقويم قريباً. استخدمي عرض القائمة لإدارة المواعيد.
               </p>
             </div>
           </CardContent>

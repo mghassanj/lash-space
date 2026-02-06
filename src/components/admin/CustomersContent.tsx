@@ -142,28 +142,28 @@ export default function CustomersContent() {
         <CardContent className="pt-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
-                placeholder="Search by name, email, or phone..."
+                placeholder="ابحثي بالاسم، الإيميل أو رقم الهاتف..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pr-10"
               />
             </div>
             <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
               <DialogTrigger asChild>
                 <Button className="bg-[#9C8974] hover:bg-[#B8856C]">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Add Customer
+                  <Plus className="w-4 h-4 ml-2" />
+                  إضافة عميل
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-md">
                 <DialogHeader>
-                  <DialogTitle>Add New Customer</DialogTitle>
+                  <DialogTitle>إضافة عميل جديد</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 py-4">
                   <div>
-                    <Label htmlFor="name">Name *</Label>
+                    <Label htmlFor="name">الاسم *</Label>
                     <Input
                       id="name"
                       value={formData.name}
@@ -171,7 +171,7 @@ export default function CustomersContent() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">البريد الإلكتروني</Label>
                     <Input
                       id="email"
                       type="email"
@@ -180,7 +180,7 @@ export default function CustomersContent() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="phone">Phone *</Label>
+                    <Label htmlFor="phone">رقم الهاتف *</Label>
                     <Input
                       id="phone"
                       value={formData.phone}
@@ -188,7 +188,7 @@ export default function CustomersContent() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="skinType">Skin Type</Label>
+                    <Label htmlFor="skinType">نوع البشرة</Label>
                     <Input
                       id="skinType"
                       value={formData.skinType}
@@ -196,7 +196,7 @@ export default function CustomersContent() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="allergies">Allergies</Label>
+                    <Label htmlFor="allergies">الحساسية</Label>
                     <Input
                       id="allergies"
                       value={formData.allergies}
@@ -204,7 +204,7 @@ export default function CustomersContent() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="notes">Notes</Label>
+                    <Label htmlFor="notes">ملاحظات</Label>
                     <Textarea
                       id="notes"
                       value={formData.notes}
@@ -215,10 +215,10 @@ export default function CustomersContent() {
                 </div>
                 <DialogFooter>
                   <Button variant="outline" onClick={() => setShowAddDialog(false)}>
-                    Cancel
+                    إلغاء
                   </Button>
                   <Button onClick={handleAddCustomer} className="bg-[#9C8974] hover:bg-[#B8856C]">
-                    Add Customer
+                    إضافة عميل
                   </Button>
                 </DialogFooter>
               </DialogContent>
@@ -231,20 +231,20 @@ export default function CustomersContent() {
       <Card>
         <CardContent className="p-0">
           {loading ? (
-            <div className="p-8 text-center text-gray-500">Loading customers...</div>
+            <div className="p-8 text-center text-gray-500">جاري تحميل العملاء...</div>
           ) : customers.length === 0 ? (
-            <div className="p-8 text-center text-gray-500">No customers found.</div>
+            <div className="p-8 text-center text-gray-500">لا يوجد عملاء.</div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Name</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Contact</th>
-                    <th className="text-right py-3 px-4 font-medium text-gray-600">Total Visits</th>
-                    <th className="text-right py-3 px-4 font-medium text-gray-600">Total Spent</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Last Visit</th>
-                    <th className="text-right py-3 px-4 font-medium text-gray-600">Actions</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">الاسم</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">معلومات الاتصال</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">إجمالي الزيارات</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">إجمالي الإنفاق</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">آخر زيارة</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">الإجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -259,12 +259,12 @@ export default function CustomersContent() {
                       </td>
                       <td className="py-3 px-4 text-right">{customer._count?.appointments || 0}</td>
                       <td className="py-3 px-4 text-right font-medium">
-                        ${(customer.totalSpent || 0).toFixed(2)}
+                        {(customer.totalSpent || 0).toFixed(2)} ر.س
                       </td>
                       <td className="py-3 px-4 text-gray-600">
                         {customer.lastVisit
                           ? format(new Date(customer.lastVisit), "MMM dd, yyyy")
-                          : "Never"}
+                          : "لم تتم زيارة"}
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex items-center justify-end gap-2">
@@ -297,11 +297,11 @@ export default function CustomersContent() {
       <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Edit Customer</DialogTitle>
+            <DialogTitle>تعديل بيانات العميل</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div>
-              <Label htmlFor="edit-name">Name *</Label>
+              <Label htmlFor="edit-name">الاسم *</Label>
               <Input
                 id="edit-name"
                 value={formData.name}
@@ -309,7 +309,7 @@ export default function CustomersContent() {
               />
             </div>
             <div>
-              <Label htmlFor="edit-email">Email</Label>
+              <Label htmlFor="edit-email">البريد الإلكتروني</Label>
               <Input
                 id="edit-email"
                 type="email"
@@ -318,7 +318,7 @@ export default function CustomersContent() {
               />
             </div>
             <div>
-              <Label htmlFor="edit-phone">Phone *</Label>
+              <Label htmlFor="edit-phone">رقم الهاتف *</Label>
               <Input
                 id="edit-phone"
                 value={formData.phone}
@@ -326,7 +326,7 @@ export default function CustomersContent() {
               />
             </div>
             <div>
-              <Label htmlFor="edit-skinType">Skin Type</Label>
+              <Label htmlFor="edit-skinType">نوع البشرة</Label>
               <Input
                 id="edit-skinType"
                 value={formData.skinType}
@@ -334,7 +334,7 @@ export default function CustomersContent() {
               />
             </div>
             <div>
-              <Label htmlFor="edit-allergies">Allergies</Label>
+              <Label htmlFor="edit-allergies">الحساسية</Label>
               <Input
                 id="edit-allergies"
                 value={formData.allergies}
@@ -342,7 +342,7 @@ export default function CustomersContent() {
               />
             </div>
             <div>
-              <Label htmlFor="edit-notes">Notes</Label>
+              <Label htmlFor="edit-notes">ملاحظات</Label>
               <Textarea
                 id="edit-notes"
                 value={formData.notes}
@@ -353,10 +353,10 @@ export default function CustomersContent() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowEditDialog(false)}>
-              Cancel
+              إلغاء
             </Button>
             <Button onClick={handleEditCustomer} className="bg-[#9C8974] hover:bg-[#B8856C]">
-              Save Changes
+              حفظ التغييرات
             </Button>
           </DialogFooter>
         </DialogContent>

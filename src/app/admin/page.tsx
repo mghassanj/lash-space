@@ -128,6 +128,17 @@ function getStatusColor(status: string) {
   return colors[status] || colors.pending;
 }
 
+function getStatusLabel(status: string) {
+  const labels: Record<string, string> = {
+    pending: "معلق",
+    confirmed: "مؤكد",
+    completed: "مكتمل",
+    cancelled: "ملغي",
+    "no-show": "لم يحضر",
+  };
+  return labels[status] || status;
+}
+
 export default async function AdminDashboard() {
   const stats = await getDashboardStats();
 
@@ -135,8 +146,8 @@ export default async function AdminDashboard() {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-500 mt-1">Welcome back! Here's what's happening today.</p>
+        <h1 className="text-3xl font-bold text-gray-900">لوحة التحكم</h1>
+        <p className="text-gray-500 mt-1">مرحباً بك! إليك ما يحدث اليوم.</p>
       </div>
 
       {/* Stats Cards */}
@@ -144,7 +155,7 @@ export default async function AdminDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Today's Appointments
+              مواعيد اليوم
             </CardTitle>
             <Calendar className="w-4 h-4 text-[#9C8974]" />
           </CardHeader>
@@ -156,7 +167,7 @@ export default async function AdminDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Total Customers
+              إجمالي العملاء
             </CardTitle>
             <Users className="w-4 h-4 text-[#9C8974]" />
           </CardHeader>
@@ -168,19 +179,19 @@ export default async function AdminDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Revenue This Month
+              الإيرادات هذا الشهر
             </CardTitle>
             <DollarSign className="w-4 h-4 text-[#9C8974]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${stats.monthRevenue.toFixed(2)}</div>
+            <div className="text-2xl font-bold">{stats.monthRevenue.toFixed(2)} ر.س</div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">
-              Pending Bookings
+              الحجوزات المعلقة
             </CardTitle>
             <Clock className="w-4 h-4 text-[#9C8974]" />
           </CardHeader>
@@ -195,7 +206,7 @@ export default async function AdminDashboard() {
         {/* Revenue Chart */}
         <Card>
           <CardHeader>
-            <CardTitle>Revenue (Last 7 Days)</CardTitle>
+            <CardTitle>الإيرادات (آخر 7 أيام)</CardTitle>
           </CardHeader>
           <CardContent>
             <RevenueChart data={stats.revenueData} />
@@ -205,11 +216,11 @@ export default async function AdminDashboard() {
         {/* Today's Schedule */}
         <Card>
           <CardHeader>
-            <CardTitle>Today's Schedule</CardTitle>
+            <CardTitle>جدول اليوم</CardTitle>
           </CardHeader>
           <CardContent>
             {stats.todaySchedule.length === 0 ? (
-              <p className="text-gray-500 text-sm py-4">No appointments today.</p>
+              <p className="text-gray-500 text-sm py-4">لا توجد مواعيد اليوم.</p>
             ) : (
               <div className="space-y-3">
                 {stats.todaySchedule.map((appt) => (
@@ -225,7 +236,7 @@ export default async function AdminDashboard() {
                       <div className="text-sm text-gray-500">{appt.service.name}</div>
                     </div>
                     <Badge variant="outline" className={getStatusColor(appt.status)}>
-                      {appt.status}
+                      {getStatusLabel(appt.status)}
                     </Badge>
                   </div>
                 ))}
@@ -238,18 +249,18 @@ export default async function AdminDashboard() {
       {/* Recent Bookings */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Bookings</CardTitle>
+          <CardTitle>الحجوزات الأخيرة</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-medium text-gray-600">Date/Time</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-600">Customer</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-600">Service</th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-600">Status</th>
-                  <th className="text-right py-3 px-4 font-medium text-gray-600">Price</th>
+                  <th className="text-right py-3 px-4 font-medium text-gray-600">التاريخ والوقت</th>
+                  <th className="text-right py-3 px-4 font-medium text-gray-600">العميل</th>
+                  <th className="text-right py-3 px-4 font-medium text-gray-600">الخدمة</th>
+                  <th className="text-right py-3 px-4 font-medium text-gray-600">الحالة</th>
+                  <th className="text-right py-3 px-4 font-medium text-gray-600">السعر</th>
                 </tr>
               </thead>
               <tbody>
@@ -262,11 +273,11 @@ export default async function AdminDashboard() {
                     <td className="py-3 px-4 text-gray-600">{booking.service.name}</td>
                     <td className="py-3 px-4">
                       <Badge variant="outline" className={getStatusColor(booking.status)}>
-                        {booking.status}
+                        {getStatusLabel(booking.status)}
                       </Badge>
                     </td>
                     <td className="py-3 px-4 text-right font-medium">
-                      ${booking.totalPrice.toFixed(2)}
+                      {booking.totalPrice.toFixed(2)} ر.س
                     </td>
                   </tr>
                 ))}

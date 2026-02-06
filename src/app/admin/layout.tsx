@@ -22,13 +22,13 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const navLinks = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/appointments", label: "Appointments", icon: Calendar },
-  { href: "/admin/customers", label: "Customers", icon: Users },
-  { href: "/admin/services", label: "Services", icon: Sparkles },
-  { href: "/admin/inventory", label: "Inventory", icon: Package },
-  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/admin/settings", label: "Settings", icon: Settings },
+  { href: "/admin", label: "لوحة التحكم", icon: LayoutDashboard },
+  { href: "/admin/appointments", label: "المواعيد", icon: Calendar },
+  { href: "/admin/customers", label: "العملاء", icon: Users },
+  { href: "/admin/services", label: "الخدمات", icon: Sparkles },
+  { href: "/admin/inventory", label: "المخزون", icon: Package },
+  { href: "/admin/analytics", label: "التحليلات", icon: BarChart3 },
+  { href: "/admin/settings", label: "الإعدادات", icon: Settings },
 ];
 
 function Sidebar({ className = "" }: { className?: string }) {
@@ -51,8 +51,8 @@ function Sidebar({ className = "" }: { className?: string }) {
               href={link.href}
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-all group"
             >
-              <Icon className="w-5 h-5 group-hover:text-[#9C8974] transition-colors" />
               <span className="font-medium">{link.label}</span>
+              <Icon className="w-5 h-5 group-hover:text-[#9C8974] transition-colors" />
             </Link>
           );
         })}
@@ -63,7 +63,7 @@ function Sidebar({ className = "" }: { className?: string }) {
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50" dir="rtl">
       {/* Desktop Sidebar */}
       <aside className="hidden lg:block w-64 border-r border-gray-200">
         <Sidebar />
@@ -88,7 +88,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               </Sheet>
               
               <h2 className="text-lg font-semibold text-gray-900 hidden sm:block">
-                Admin Dashboard
+                لوحة التحكم
               </h2>
             </div>
 
@@ -101,13 +101,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                       AD
                     </AvatarFallback>
                   </Avatar>
-                  <span className="hidden sm:inline">Admin</span>
+                  <span className="hidden sm:inline">المدير</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem className="cursor-pointer">
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Logout
+                  <LogOut className="w-4 h-4 ml-2" />
+                  تسجيل الخروج
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
