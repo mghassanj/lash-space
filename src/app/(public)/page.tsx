@@ -98,7 +98,7 @@ export default function HomePage() {
       <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#1A1A1A]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#9C8974]/30 via-[#BAB0A5]/10 to-[#1A1A1A]" />
         <div className="container relative z-10 mx-auto px-4 text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#BAB0A5]">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.15em] text-[#BAB0A5] md:tracking-[0.3em]">
             {t("hero.subtitle")}
           </p>
           <h1 className="mb-6 font-serif text-5xl font-bold text-[#E8E8DC] md:text-7xl">
