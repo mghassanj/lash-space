@@ -36,8 +36,8 @@ const translations: Record<string, Record<Locale, string>> = {
   "hero.title1": { ar: "ارتقي بجمالك", en: "Elevate Your" },
   "hero.title2": { ar: "الطبيعي", en: "Natural Beauty" },
   "hero.description": {
-    ar: "رموش فاخرة في جدة. كلاسيك، فوليوم، هايبرد، وت ست، ويسبي ورموش أسبوعية. تجربة استوديو رموش منزلي فاخرة.",
-    en: "Premium eyelash extensions in Jeddah. Classic, volume, hybrid, wet set, wispy & weekly lashes. Luxury home-based lash studio experience.",
+    ar: "مرحبًا بك في مساحتك الخاصة التي صُممت لتجمع بين الفخامة، الراحة، والجمال الطبيعي",
+    en: "Welcome to your own space, designed to bring together luxury, comfort, and natural beauty",
   },
   "hero.bookAppointment": { ar: "احجزي موعدك", en: "Book Your Appointment" },
   "hero.exploreServices": { ar: "استكشفي الخدمات", en: "Explore Services" },
