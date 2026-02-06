@@ -48,42 +48,104 @@ export default async function BookingPage() {
               سياسة الحجز
             </h2>
             <p className="text-center text-sm text-muted-foreground mb-6">Booking Policy</p>
-            <ul className="space-y-4 text-[#1A1A1A]" dir="rtl">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>لتأكيد الحجز دفع عربون <strong>٥٠ ريال</strong> غير مستردة في حال الإلغاء قبل الموعد بيوم أو في نفس اليوم</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>الحضور في الموعد وفي حال التأخر لـ <strong>١٥ دقيقة</strong> سيتم إلغاء الموعد تلقائيًا</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>الدفع <strong>كاش</strong> أو عن طريق <strong>STC PAY</strong> فقط</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>مدة جلسة تركيب الرموش الشهرية <strong>ساعتين إلى ثلاث ساعات</strong></span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>مدة تركيب الرموش الأسبوعية من <strong>٣٠ إلى ٤٥ دقيقة</strong></span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>ممنوع اصطحاب الأطفال أو المرافقين وفي حال الاضطرار الرجاء الإبلاغ</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">•</span>
-                <span>قبل الموعد اتباع إرشادات عناية ما قبل التركيب</span>
-              </li>
-            </ul>
+
+            {/* Booking & Confirmation */}
+            <div className="mb-8" dir="rtl">
+              <h3 className="text-lg font-bold text-[#9C8974] mb-3 flex items-center gap-2">📅 الحجز والتأكيد</h3>
+              <ul className="space-y-3 text-[#1A1A1A]">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>الحجز عبر الموقع الإلكتروني قبل <strong>48 ساعة</strong> على الأقل</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>يتم تأكيد الموعد خلال <strong>24 ساعة</strong> من الطلب</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>ستصلك رسالة تذكيرية قبل الموعد بـ 24 ساعة — يرجى الرد لتأكيد حضورك</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Payment */}
+            <div className="mb-8" dir="rtl">
+              <h3 className="text-lg font-bold text-[#9C8974] mb-3 flex items-center gap-2">💳 الدفع</h3>
+              <ul className="space-y-3 text-[#1A1A1A]">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>دفعة تأمينية <strong>50 ريال</strong> عند الحجز (تُخصم من إجمالي الخدمة)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>طرق الدفع: <strong>نقداً</strong> أو <strong>تحويل بنكي</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>الدفعة غير مستردة في حال الإلغاء المتأخر أو عدم الحضور</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Cancellation & Rescheduling */}
+            <div className="mb-8" dir="rtl">
+              <h3 className="text-lg font-bold text-[#9C8974] mb-3 flex items-center gap-2">❌ الإلغاء وإعادة الجدولة</h3>
+              <ul className="space-y-3 text-[#1A1A1A]">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>الإلغاء قبل <strong>24 ساعة</strong>: استرداد الدفعة أو تحويلها لموعد آخر</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>الإلغاء في نفس اليوم أو عدم الحضور: فقدان الدفعة</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>الإلغاء المتكرر (أكثر من مرتين): قد يُطلب دفع كامل قيمة الخدمة مقدماً</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>إعادة الجدولة <strong>مرة واحدة مجاناً</strong> (قبل 24 ساعة، خلال 30 يوم من الموعد الأصلي)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Attendance */}
+            <div className="mb-8" dir="rtl">
+              <h3 className="text-lg font-bold text-[#9C8974] mb-3 flex items-center gap-2">⏰ الحضور</h3>
+              <ul className="space-y-3 text-[#1A1A1A]">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>يرجى الحضور قبل الموعد بـ <strong>5 دقائق</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>التأخير أكثر من <strong>15 دقيقة</strong> = إلغاء تلقائي وفقدان الدفعة</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Specialist Cancellation */}
+            <div className="mb-8" dir="rtl">
+              <h3 className="text-lg font-bold text-[#9C8974] mb-3 flex items-center gap-2">🔄 إلغاء من قبل الأخصائية</h3>
+              <ul className="space-y-3 text-[#1A1A1A]">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 text-[#9C8974]">•</span>
+                  <span>في حالة الطوارئ ستُشعرين فوراً مع إعادة جدولة أو استرداد كامل</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Agreement */}
+            <div className="mt-6 p-4 bg-[#E8E8DC]/50 rounded-lg" dir="rtl">
+              <p className="text-[#9C8974] font-medium text-center">✅ بحجز الموعد، فإنك توافقين على شروط وسياسات الخدمة. يرجى إبلاغنا بأي حساسية أو مشاكل صحية في العين قبل الموعد.</p>
+            </div>
           </div>
 
           {/* Pre-Care Instructions */}
           <div className="bg-white rounded-2xl p-8 shadow-sm mt-6">
             <h2 className="text-2xl font-serif font-bold text-[#1A1A1A] mb-2 text-center">
-              عناية ما قبل التركيب
+              🩺 تعليمات ما قبل الموعد
             </h2>
             <p className="text-center text-sm text-muted-foreground mb-6">Pre-Care Instructions</p>
             <p className="text-center text-muted-foreground mb-6" dir="rtl">
@@ -96,7 +158,7 @@ export default async function BookingPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>منتجات العناية مثل المرطبات وواقي الشمس — لأنها صعب تطلع من الرموش وتضعف أداء الغراء فبالتالي تساقط رموش أسرع</span>
+                <span>منتجات العناية مثل المرطبات وواقي الشمس — لأنها تضعف أداء اللاصق وتسبب تساقط أسرع</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-1 text-[#9C8974]">✕</span>
@@ -104,7 +166,11 @@ export default async function BookingPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>شرب القهوة أو أنواع المنبهات بشكل عام</span>
+                <span>شرب القهوة أو المنبهات بشكل عام</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1 text-[#9C8974]">✕</span>
+                <span>ممنوع اصطحاب أطفال أو مرافقين (في حال الاضطرار يرجى الإبلاغ مسبقاً)</span>
               </li>
             </ul>
             <div className="mt-6 p-4 bg-[#E8E8DC]/50 rounded-lg" dir="rtl">
