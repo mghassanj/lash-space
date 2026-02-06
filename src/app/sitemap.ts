@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { MetadataRoute } from "next";
 import { prisma } from "@/lib/db";
 import { SITE_CONFIG } from "@/lib/constants";
