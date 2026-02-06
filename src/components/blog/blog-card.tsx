@@ -1,24 +1,37 @@
+"use client";
+
 import Link from "next/link";
 import { Calendar, Tag } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 interface BlogCardProps {
   title: string;
+  titleAr: string;
   excerpt: string;
+  excerptAr: string;
   slug: string;
   publishedAt: Date | null;
   tags: string;
+  tagsAr: string;
   image?: string | null;
 }
 
 export function BlogCard({
   title,
+  titleAr,
   excerpt,
+  excerptAr,
   slug,
   publishedAt,
   tags,
+  tagsAr,
   image,
 }: BlogCardProps) {
-  const tagList = tags.split(",").map((tag) => tag.trim());
+  const { locale, t } = useI18n();
+  const displayTitle = locale === "ar" && titleAr ? titleAr : title;
+  const displayExcerpt = locale === "ar" && excerptAr ? excerptAr : excerpt;
+  const displayTags = locale === "ar" && tagsAr ? tagsAr : tags;
+  const tagList = displayTags.split(",").map((tag) => tag.trim());
 
   return (
     <article className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
@@ -27,7 +40,7 @@ export function BlogCard({
           {image ? (
             <img
               src={image}
-              alt={title}
+              alt={displayTitle}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
@@ -39,21 +52,24 @@ export function BlogCard({
 
         <div className="p-6">
           <h2 className="text-2xl font-serif text-[#1A1A1A] mb-3 group-hover:text-[#9C8974] transition-colors line-clamp-2">
-            {title}
+            {displayTitle}
           </h2>
 
-          <p className="text-gray-600 mb-4 line-clamp-3">{excerpt}</p>
+          <p className="text-gray-600 mb-4 line-clamp-3">{displayExcerpt}</p>
 
           <div className="flex items-center justify-between text-sm text-gray-500">
             {publishedAt && (
               <div className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                <time dateTime={publishedAt.toISOString()}>
-                  {new Date(publishedAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+                <time dateTime={new Date(publishedAt).toISOString()} dir="ltr">
+                  {new Date(publishedAt).toLocaleDateString(
+                    locale === "ar" ? "ar-SA" : "en-US",
+                    {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    }
+                  )}
                 </time>
               </div>
             )}

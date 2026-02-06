@@ -234,10 +234,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <BlogCard
                     key={relatedPost.id}
                     title={relatedPost.title}
+                    titleAr={relatedPost.titleAr}
                     excerpt={relatedPost.excerpt}
+                    excerptAr={relatedPost.excerptAr}
                     slug={relatedPost.slug}
                     publishedAt={relatedPost.publishedAt}
                     tags={relatedPost.tags}
+                    tagsAr={relatedPost.tagsAr}
                     image={relatedPost.image}
                   />
                 ))}
