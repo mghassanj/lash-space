@@ -3,6 +3,7 @@ import { Award, Heart, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Section } from "@/components/public/Section";
+import { InstagramFeed } from "@/components/public/InstagramFeed";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function HomePage() {
@@ -205,6 +206,9 @@ export default function HomePage() {
           ))}
         </div>
       </Section>
+
+      {/* Instagram Feed */}
+      <InstagramFeed />
 
       {/* CTA Banner */}
       <Section className="bg-[#1A1A1A] text-white">
