@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Noto_Sans_Arabic } from "next/font/google";
+import { Inter, Playfair_Display, Tajawal } from "next/font/google";
 import "./globals.css";
 import { SITE_CONFIG } from "@/lib/constants";
 import { generateLocalBusinessJsonLd } from "@/lib/seo";
@@ -15,10 +15,10 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const notoArabic = Noto_Sans_Arabic({
+const tajawal = Tajawal({
   variable: "--font-arabic",
   subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -95,7 +95,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${notoArabic.variable} font-sans antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${tajawal.variable} font-sans antialiased`}
       >
         <I18nProvider>
           {children}
