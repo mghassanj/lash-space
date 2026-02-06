@@ -84,7 +84,7 @@ export function ServicesPageClient({
                 duration={service.duration}
                 price={service.price}
                 category={locale === "ar" ? category.nameAr : category.name}
-                featured={service.name === "Volume Full Set"}
+                featured={service.name === "Volume"}
               />
             ))}
           </div>

@@ -70,7 +70,7 @@ export default function HomePage() {
         locale === "ar"
           ? "حبيت رموشي! الفنانة كانت ماهرة ولطيفة جدًا. أفضل تجربة رموش مرت علي!"
           : "Absolutely in love with my lashes! The technician was so skilled and gentle. Best lash experience I've ever had!",
-      service: locale === "ar" ? "فوليوم كامل" : "Volume Full Set",
+      service: locale === "ar" ? "فوليوم" : "Volume",
     },
     {
       name: locale === "ar" ? "نورة خ." : "Noura K.",

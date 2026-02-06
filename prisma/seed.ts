@@ -10,127 +10,130 @@ async function main() {
   await prisma.businessSettings.deleteMany();
   await prisma.adminUser.deleteMany();
 
-  // Seed Lash Space services (Jeddah pricing in SAR)
+  // Seed Lash Space services — REAL prices from @lashspace.sa (Jan 2025)
   const services = [
+    // Classic
     {
-      name: "Classic Full Set",
-      slug: "classic-full-set",
-      description:
-        "One premium extension per natural lash for a naturally enhanced, elegant look. Perfect for first-timers who want subtle beauty. Includes personalized consultation and aftercare guide.\n\nتركيب رمش واحد على كل رمش طبيعي لإطلالة طبيعية وأنيقة. مثالي للمرة الأولى.",
+      name: "Classic",
+      slug: "classic",
+      description: "One premium extension per natural lash for a naturally enhanced, elegant look. Perfect for first-timers.\n\nكلاسيك — رمش واحد على كل رمش طبيعي لإطلالة طبيعية وأنيقة. مثالي للمرة الأولى.",
       duration: 120,
-      price: 350,
+      price: 300,
       category: "classic",
       sortOrder: 1,
     },
     {
-      name: "Classic Refill",
-      slug: "classic-refill",
-      description:
-        "Maintain your classic set with a professional touch-up every 2-3 weeks. We replace fallen lashes and fill gaps for a fresh, full look.\n\nصيانة الرموش الكلاسيكية كل ٢-٣ أسابيع.",
-      duration: 60,
-      price: 150,
+      name: "Classic Wispy",
+      slug: "classic-wispy",
+      description: "Classic technique with alternating lengths for a feathery, textured finish. Natural base with trendy wispy dimension.\n\nكلاسيك ويسبي — تقنية الكلاسيك بأطوال متنوعة لإطلالة ريشية مميزة.",
+      duration: 150,
+      price: 350,
       category: "classic",
       sortOrder: 2,
     },
     {
-      name: "Hybrid Full Set",
-      slug: "hybrid-full-set",
-      description:
-        "The best of both worlds — a stunning mix of classic and volume techniques for a textured, wispy effect. Adds beautiful dimension while keeping a natural base.\n\nمزيج رائع من الكلاسيك والفوليوم لإطلالة مميزة.",
-      duration: 150,
-      price: 450,
-      category: "hybrid",
+      name: "Classic Half Set",
+      slug: "classic-half-set",
+      description: "Touch-up and fill for your classic set. Maintains fullness between appointments.\n\nطرف كلاسيك — تعبئة وصيانة لرموشك الكلاسيكية. يحافظ على الكثافة بين المواعيد.",
+      duration: 60,
+      price: 150,
+      category: "classic",
       sortOrder: 3,
     },
+    // Hybrid
     {
-      name: "Hybrid Refill",
-      slug: "hybrid-refill",
-      description:
-        "Keep your hybrid set looking full and textured. Recommended every 2-3 weeks for optimal retention.\n\nصيانة رموش الهايبرد كل ٢-٣ أسابيع.",
-      duration: 75,
-      price: 200,
+      name: "Hybrid",
+      slug: "hybrid",
+      description: "The best of both worlds — a stunning mix of classic and volume techniques for a textured, dimensional look.\n\nهايبرد — مزيج رائع من الكلاسيك والفوليوم لإطلالة مميزة بملمس وبُعد جميل.",
+      duration: 150,
+      price: 400,
       category: "hybrid",
       sortOrder: 4,
     },
     {
-      name: "Volume Full Set",
-      slug: "volume-full-set",
-      description:
-        "Handmade fans of 3-6 ultra-fine lashes applied to each natural lash. Creates a dramatic, fluffy look with incredible fullness. Our signature service.\n\nمراوح يدوية من ٣-٦ رموش رقيقة على كل رمش طبيعي. خدمتنا المميزة.",
-      duration: 180,
-      price: 550,
-      category: "volume",
+      name: "Hybrid Wispy",
+      slug: "hybrid-wispy",
+      description: "Hybrid technique with wispy, feathery texture. Combines volume fans with classic spikes for an editorial finish.\n\nهايبرد ويسبي — تقنية الهايبرد مع ملمس ريشي. يجمع مراوح الفوليوم مع الكلاسيك لإطلالة عصرية.",
+      duration: 150,
+      price: 450,
+      category: "hybrid",
       sortOrder: 5,
     },
     {
-      name: "Volume Refill",
-      slug: "volume-refill",
-      description:
-        "Maintain your volume set's fullness and drama. We carefully replace fans and fill any sparse areas.\n\nصيانة رموش الفوليوم للحفاظ على الكثافة.",
-      duration: 90,
-      price: 250,
-      category: "volume",
+      name: "Hybrid Half Set",
+      slug: "hybrid-half-set",
+      description: "Touch-up and fill for your hybrid set. Keeps that perfect textured look fresh.\n\nهايبرد طرف — تعبئة وصيانة لرموشك الهايبرد. يحافظ على الإطلالة المميزة.",
+      duration: 75,
+      price: 200,
+      category: "hybrid",
       sortOrder: 6,
     },
+    // Volume
     {
-      name: "Wet Set Full",
-      slug: "wet-set-full",
-      description:
-        "Sleek, defined, and glossy — the wet look lash set creates a stunning editorial effect. Fans are closed tightly for a spiky, separated look that's all over social media.\n\nإطلالة أنيقة ولامعة بأسلوب الوت ست المميز.",
-      duration: 150,
-      price: 500,
-      category: "wet-set",
+      name: "Volume",
+      slug: "volume",
+      description: "Handmade fans of ultra-fine lashes applied to each natural lash. Creates dramatic, fluffy fullness. Our signature service.\n\nفوليوم — مراوح يدوية من رموش رقيقة على كل رمش طبيعي. كثافة دراماتيكية وناعمة. خدمتنا المميزة.",
+      duration: 180,
+      price: 550,
+      category: "volume",
       sortOrder: 7,
     },
     {
-      name: "Wet Set Refill",
-      slug: "wet-set-refill",
-      description:
-        "Keep your wet set looking sharp and defined. Touch-up every 2-3 weeks.\n\nصيانة رموش الوت ست كل ٢-٣ أسابيع.",
-      duration: 75,
-      price: 220,
-      category: "wet-set",
+      name: "Volume Wispy",
+      slug: "volume-wispy",
+      description: "Full volume with alternating wispy spikes for maximum drama with textured dimension. The ultimate glam look.\n\nفوليوم ويسبي — فوليوم كامل مع أطراف ريشية متنوعة لأقصى دراما مع بُعد مميز. إطلالة الفخامة.",
+      duration: 180,
+      price: 600,
+      category: "volume",
       sortOrder: 8,
     },
     {
-      name: "Wispy Full Set",
-      slug: "wispy-full-set",
-      description:
-        "Trendy textured look with alternating short and long lashes creating a feathery, editorial finish. The Kim-K inspired style that's dominating social media.\n\nإطلالة ريشية عصرية بأطوال متنوعة على طريقة كيم كارداشيان.",
-      duration: 150,
-      price: 480,
-      category: "wispy",
+      name: "Volume Half Set",
+      slug: "volume-half-set",
+      description: "Touch-up and fill for your volume set. Maintains that full, fluffy drama between appointments.\n\nفوليوم طرف — تعبئة وصيانة لرموشك الفوليوم. يحافظ على الكثافة والنعومة.",
+      duration: 90,
+      price: 275,
+      category: "volume",
       sortOrder: 9,
     },
+    // Wet Set
     {
-      name: "Wispy Refill",
-      slug: "wispy-refill",
-      description:
-        "Maintain your wispy set's feathery texture and dimension.\n\nصيانة رموش الويسبي للحفاظ على الملمس الريشي.",
-      duration: 75,
-      price: 210,
-      category: "wispy",
+      name: "Wet Set",
+      slug: "wet-set",
+      description: "Sleek, defined, and glossy — the wet look creates a stunning editorial effect. Tightly closed fans for a spiky, separated look.\n\nويت سيت — إطلالة أنيقة ولامعة بأسلوب المجلات. مراوح مغلقة بإحكام لمظهر محدد ولافت.",
+      duration: 150,
+      price: 450,
+      category: "wet-set",
       sortOrder: 10,
     },
     {
+      name: "Wet Set Wispy",
+      slug: "wet-set-wispy",
+      description: "Wet set technique combined with wispy spikes. Glossy, defined base with feathery texture for a unique editorial look.\n\nويت سيت ويسبي — تقنية الويت سيت مع أطراف ريشية. قاعدة لامعة ومحددة مع ملمس ريشي لإطلالة فريدة.",
+      duration: 150,
+      price: 500,
+      category: "wet-set",
+      sortOrder: 11,
+    },
+    // Weekly
+    {
       name: "Weekly Lashes",
       slug: "weekly-lashes",
-      description:
-        "Quick, beautiful temporary lash enhancement perfect for events, parties, or a weekly glam boost. Easy application and comfortable wear for up to 7 days.\n\nرموش أسبوعية مؤقتة مثالية للمناسبات والحفلات.",
+      description: "Quick, beautiful temporary lash enhancement perfect for events, parties, or a weekly glam boost. Comfortable wear for up to 7 days.\n\nرموش أسبوعية مؤقتة مثالية للمناسبات والحفلات. مريحة لمدة تصل إلى ٧ أيام.",
       duration: 45,
       price: 120,
       category: "weekly",
-      sortOrder: 11,
+      sortOrder: 12,
     },
+    // Other
     {
       name: "Lash Removal",
       slug: "lash-removal",
-      description:
-        "Safe, professional removal of existing lash extensions using a gentle dissolving technique. Zero damage to your natural lashes.\n\nإزالة احترافية وآمنة للرموش بدون أي ضرر.",
+      description: "Safe, professional removal of existing lash extensions using a gentle dissolving technique. Zero damage to your natural lashes.\n\nإزالة احترافية وآمنة للرموش بدون أي ضرر للرموش الطبيعية.",
       duration: 30,
       price: 80,
       category: "other",
-      sortOrder: 12,
+      sortOrder: 13,
     },
   ];
 
@@ -219,8 +222,8 @@ async function main() {
 
   if (allCustomers.length > 0 && allServices.length > 0) {
     const now = new Date();
-    const volumeService = allServices.find((s) => s.slug === "volume-full-set");
-    const classicRefill = allServices.find((s) => s.slug === "classic-refill");
+    const volumeService = allServices.find((s) => s.slug === "volume");
+    const classicRefill = allServices.find((s) => s.slug === "classic-half-set");
     const weeklyLashes = allServices.find((s) => s.slug === "weekly-lashes");
 
     const appointments = [
