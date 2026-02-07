@@ -12,6 +12,8 @@ export async function POST(request: NextRequest) {
       customerName,
       customerPhone,
       customerEmail,
+      dateOfBirth,
+      allergies,
       notes,
     } = body;
 
@@ -68,6 +70,8 @@ export async function POST(request: NextRequest) {
           name: customerName,
           phone: customerPhone,
           email: customerEmail || null,
+          dateOfBirth: dateOfBirth || null,
+          allergies: allergies || null,
           notes: notes || null,
         },
       });
@@ -78,6 +82,8 @@ export async function POST(request: NextRequest) {
         data: {
           name: customerName,
           email: customerEmail || customer.email,
+          dateOfBirth: dateOfBirth || customer.dateOfBirth,
+          allergies: allergies || customer.allergies,
           notes: notes || customer.notes,
         },
       });

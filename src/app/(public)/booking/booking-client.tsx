@@ -79,6 +79,10 @@ export function BookingClient({ services }: BookingClientProps) {
           customerName: customerData.name,
           customerPhone: customerData.phone,
           customerEmail: customerData.email,
+          dateOfBirth: customerData.dateOfBirth,
+          allergies: customerData.hasAllergy
+            ? (customerData.allergyDetails || "نعم")
+            : null,
           notes: customerData.notes,
         }),
       });

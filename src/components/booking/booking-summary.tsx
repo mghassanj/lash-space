@@ -3,7 +3,7 @@
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, Clock, User, Phone, Mail, FileText } from "lucide-react";
+import { Calendar, Clock, User, Phone, Mail, FileText, Cake, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
@@ -22,6 +22,9 @@ interface CustomerData {
   name: string;
   phone: string;
   email: string;
+  dateOfBirth: string;
+  hasAllergy: boolean;
+  allergyDetails: string;
   notes: string;
 }
 
@@ -127,6 +130,21 @@ export function BookingSummary({
                   <span>{customerData.email}</span>
                 </div>
               )}
+              {customerData.dateOfBirth && (
+                <div className="flex items-center gap-2 text-sm">
+                  <Cake className="w-4 h-4 text-[#9C8974]" />
+                  <span>{customerData.dateOfBirth}</span>
+                </div>
+              )}
+              <div className="flex items-center gap-2 text-sm">
+                <AlertTriangle className="w-4 h-4 text-[#9C8974]" />
+                <span>
+                  {isAr ? "حساسية: " : "Allergies: "}
+                  {customerData.hasAllergy
+                    ? (customerData.allergyDetails || (isAr ? "نعم" : "Yes"))
+                    : (isAr ? "لا يوجد" : "None")}
+                </span>
+              </div>
               {customerData.notes && (
                 <div className="flex items-start gap-2 text-sm mt-3 pt-3 border-t border-gray-200">
                   <FileText className="w-4 h-4 text-[#9C8974] mt-0.5" />

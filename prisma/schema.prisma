@@ -15,6 +15,7 @@ model Customer {
   notes        String?
   skinType     String?
   allergies    String?
+  dateOfBirth  String?
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   appointments Appointment[]
