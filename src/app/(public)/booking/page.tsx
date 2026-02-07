@@ -142,41 +142,7 @@ export default async function BookingPage() {
             </div>
           </div>
 
-          {/* Pre-Care Instructions */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm mt-6">
-            <h2 className="text-2xl font-serif font-bold text-[#1A1A1A] mb-2 text-center">
-              🩺 تعليمات ما قبل الموعد
-            </h2>
-            <p className="text-center text-sm text-muted-foreground mb-6">Pre-Care Instructions</p>
-            <p className="text-center text-muted-foreground mb-6" dir="rtl">
-              تأكدي لما تحجزي موعد الرموش تتجنبي كل من الآتي:
-            </p>
-            <ul className="space-y-4 text-[#1A1A1A]" dir="rtl">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>المكياج بأنواعه خصوصًا حول منطقة العين — ماسكارا، كونسيلر، كحل.. إلخ</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>منتجات العناية مثل المرطبات وواقي الشمس — لأنها تضعف أداء اللاصق وتسبب تساقط أسرع</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>تركيب الرموش اليومية أو الأسبوعية</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>شرب القهوة أو المنبهات بشكل عام</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 text-[#9C8974]">✕</span>
-                <span>ممنوع اصطحاب أطفال أو مرافقين (في حال الاضطرار يرجى الإبلاغ مسبقاً)</span>
-              </li>
-            </ul>
-            <div className="mt-6 p-4 bg-[#E8E8DC]/50 rounded-lg" dir="rtl">
-              <p className="text-[#9C8974] font-medium">✓ تأكدي قبل لا تجي موعد الرموش تحطي قطرة مرطبة وتشيلي عدساتك</p>
-            </div>
-          </div>
+          {/* Pre-Care Instructions removed — merged into booking policy above */}
         </div>
       </div>
     </div>
