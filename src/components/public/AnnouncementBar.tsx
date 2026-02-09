@@ -11,7 +11,7 @@ export function AnnouncementBar() {
   return (
     <div className="relative bg-[#1A1A1A] text-center text-xs text-[#BAB0A5] py-2 px-8">
       <p className="tracking-wider">
-        ✨ خصم 10% على أول زيارة — احجزي الآن ✨
+        🌙 تم فتح مواعيد رمضان — احجزي الآن 🌙
       </p>
       <button
         onClick={() => setVisible(false)}
