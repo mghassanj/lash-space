@@ -114,8 +114,8 @@ const translations: Record<string, Record<Locale, string>> = {
   // Why Choose Us
   "why.title": { ar: "لماذا لاش سبيس", en: "Why Choose Lash Space" },
   "why.subtitle": { ar: "اكتشفي الفرق في فن الرموش الفاخرة", en: "Experience the difference of true luxury lash artistry" },
-  "why.expertTitle": { ar: "فنانات خبيرات", en: "Expert Artists" },
-  "why.expertDesc": { ar: "فنيات رموش معتمدات بسنوات من الخبرة والتعليم المستمر في أحدث التقنيات.", en: "Certified lash technicians with years of experience and continuous education." },
+  "why.expertTitle": { ar: "أخصائية تركيب رموش", en: "Lash Extension Specialist" },
+  "why.expertDesc": { ar: "أخصائية معتمدة بسنوات من الخبرة والتعليم المستمر في أحدث التقنيات.", en: "Certified specialist with years of experience and continuous education in the latest techniques." },
   "why.premiumTitle": { ar: "منتجات فاخرة", en: "Premium Products" },
   "why.premiumDesc": { ar: "نستخدم فقط أجود المنتجات المضادة للحساسية الآمنة وطويلة الأمد.", en: "We use only the highest quality, hypoallergenic products that are safe and long-lasting." },
   "why.luxuryTitle": { ar: "تجربة فاخرة", en: "Luxury Experience" },
