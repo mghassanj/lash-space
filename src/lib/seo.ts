@@ -61,7 +61,7 @@ export function generateLocalBusinessJsonLd() {
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     telephone: SITE_CONFIG.phone,
-    email: SITE_CONFIG.email,
+    // email removed
     address: {
       "@type": "PostalAddress",
       streetAddress: "Al-Manar",

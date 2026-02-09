@@ -130,16 +130,7 @@ export function Footer() {
                   {SITE_CONFIG.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 flex-shrink-0 text-[#9C8974]" />
-                <a
-                  href={`mailto:${SITE_CONFIG.email}`}
-                  className="transition-colors hover:text-[#9C8974]"
-                  dir="ltr"
-                >
-                  {SITE_CONFIG.email}
-                </a>
-              </li>
+              {/* Email removed */}
             </ul>
           </div>
         </div>
