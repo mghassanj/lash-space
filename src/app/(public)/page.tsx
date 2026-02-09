@@ -59,7 +59,7 @@ function HeroSection({ t, locale }: { t: (key: string) => string; locale: string
   return (
     <>
       {/* Part 1: Animated Slider */}
-      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-[#1A1A1A] md:min-h-[70vh]">
+      <section className="relative flex min-h-[40vh] items-center justify-center overflow-hidden bg-[#1A1A1A] md:min-h-[50vh]">
         {/* Background images */}
         {heroSlides.map((s, i) => (
           <div
@@ -97,25 +97,15 @@ function HeroSection({ t, locale }: { t: (key: string) => string; locale: string
       </section>
 
       {/* Part 2: Fixed CTA */}
-      <section className="bg-[#1A1A1A] py-10 border-t border-[#BAB0A5]/10">
+      <section className="bg-[#1A1A1A] py-6 border-t border-[#BAB0A5]/10">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#9C8974] px-8 text-lg text-white hover:bg-[#7A6B5A]"
-            >
-              <Link href="/booking">{t("hero.bookAppointment")}</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-[#BAB0A5]/50 bg-transparent px-8 text-lg text-[#E8E8DC] hover:border-[#9C8974] hover:bg-[#9C8974]/10"
-            >
-              <Link href="/services">{t("hero.exploreServices")}</Link>
-            </Button>
-          </div>
+          <Button
+            asChild
+            size="lg"
+            className="bg-[#9C8974] px-10 text-lg text-white hover:bg-[#7A6B5A]"
+          >
+            <Link href="/booking">{t("hero.bookAppointment")}</Link>
+          </Button>
         </div>
       </section>
     </>

@@ -29,48 +29,53 @@ const NAV_ITEMS = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#BAB0A5]/20 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/images/logo.svg"
-            alt="LASH SPACE"
-            width={180}
-            height={37}
-            className="h-9 w-auto"
-            priority
-          />
-        </Link>
+      {/* Top row: Nav links + Logo centered + Book button */}
+      <div className="container mx-auto px-4">
+        {/* Desktop */}
+        <div className="hidden md:flex flex-col items-center py-3">
+          {/* Logo centered + slogan */}
+          <Link href="/" className="flex flex-col items-center mb-3">
+            <Image
+              src="/images/logo.svg"
+              alt="LASH SPACE"
+              width={180}
+              height={37}
+              className="h-9 w-auto"
+              priority
+            />
+            <span className="mt-1 text-[10px] tracking-[0.25em] uppercase text-[#BAB0A5]">
+              {locale === "ar" ? "أخصائية تركيب رموش — جدة" : "Lash Extension Specialist — Jeddah"}
+            </span>
+          </Link>
+          {/* Nav links */}
+          <nav className="flex items-center gap-6">
+            {NAV_ITEMS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-[#9C8974]",
+                  pathname === link.href
+                    ? "text-[#9C8974]"
+                    : "text-muted-foreground"
+                )}
+              >
+                {t(link.key)}
+              </Link>
+            ))}
+            <LanguageSwitcher />
+            <Button asChild className="bg-[#9C8974] hover:bg-[#7A6B5A]">
+              <Link href="/booking">{t("nav.bookNow")}</Link>
+            </Button>
+          </nav>
+        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {NAV_ITEMS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-[#9C8974]",
-                pathname === link.href
-                  ? "text-[#9C8974]"
-                  : "text-muted-foreground"
-              )}
-            >
-              {t(link.key)}
-            </Link>
-          ))}
-          <LanguageSwitcher />
-          <Button asChild className="bg-[#9C8974] hover:bg-[#7A6B5A]">
-            <Link href="/booking">{t("nav.bookNow")}</Link>
-          </Button>
-        </nav>
-
-        {/* Mobile Menu */}
-        <div className="flex items-center gap-2 md:hidden">
-          <LanguageSwitcher />
+        {/* Mobile */}
+        <div className="flex md:hidden items-center justify-between h-14">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -114,6 +119,20 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+
+          {/* Centered logo on mobile */}
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <Image
+              src="/images/logo.svg"
+              alt="LASH SPACE"
+              width={150}
+              height={31}
+              className="h-8 w-auto"
+              priority
+            />
+          </Link>
+
+          <LanguageSwitcher />
         </div>
       </div>
     </header>
