@@ -144,12 +144,6 @@ export default function HomePage() {
       description: t("services.hybridDesc"),
       href: "/services#hybrid",
     },
-    {
-      icon: "🌙",
-      title: t("services.lashLift"),
-      description: t("services.lashLiftDesc"),
-      href: "/services#lash-lift",
-    },
   ];
 
   const features = [
@@ -205,36 +199,7 @@ export default function HomePage() {
       {/* Hero Section — Slider + CTA */}
       <HeroSection t={t} locale={locale} />
 
-      {/* Featured Services */}
-      <Section className="bg-white">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 font-serif text-4xl font-bold text-[#1A1A1A]">
-            {t("services.signatureTitle")}
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            {t("services.signatureSubtitle")}
-          </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {featuredServices.map((service) => (
-            <Link key={service.title} href={service.href} className="group">
-              <Card className="h-full border-[#9C8974]/20 transition-all hover:border-[#9C8974] hover:shadow-lg">
-                <CardHeader className="text-center">
-                  <div className="mb-4 text-5xl">{service.icon}</div>
-                  <CardTitle className="font-serif text-xl">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </Section>
+      {/* Featured Services section removed */}
 
       {/* Why Choose Us */}
       <Section className="bg-[#E8E8DC]">
