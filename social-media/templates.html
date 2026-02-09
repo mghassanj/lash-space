@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lash Space Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #f5f5f5; font-family: 'Tajawal', sans-serif; padding: 40px; }
+
+:root {
+  --olive: #898A73;
+  --ivory: #E8E8DC;
+  --silver: #BBBAB3;
+  --taupe: #BAB0A5;
+  --mocha: #9C8974;
+  --black: #1A1A1A;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  color: var(--black);
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.page-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: var(--mocha);
+  margin-bottom: 50px;
+}
+
+.template-section {
+  margin-bottom: 60px;
+}
+.section-title {
+  font-size: 20px;
+  color: var(--olive);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.section-desc {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* Template 1: Before & After */
+.template-ba {
+  width: 540px;
+  height: 540px;
+  background: var(--ivory);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.template-ba .top-bar {
+  background: var(--olive);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ivory);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.template-ba .photos-area {
+  display: flex;
+  height: 380px;
+  gap: 3px;
+  padding: 15px;
+}
+.template-ba .photo-box {
+  flex: 1;
+  background: var(--silver);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.template-ba .photo-box .label {
+  position: absolute;
+  bottom: 12px;
+  background: var(--olive);
+  color: var(--ivory);
+  padding: 4px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.template-ba .photo-box .icon {
+  font-size: 60px;
+  color: var(--taupe);
+}
+.template-ba .bottom-bar {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+.template-ba .logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--olive);
+  letter-spacing: 2px;
+}
+.template-ba .info-text {
+  font-size: 12px;
+  color: var(--mocha);
+  text-align: left;
+}
+
+/* Template 2: Info/Tips Carousel */
+.template-info {
+  width: 540px;
+  height: 540px;
+  background: var(--ivory);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.template-info .accent-top {
+  height: 8px;
+  background: var(--olive);
+}
+.template-info .content {
+  padding: 50px 40px;
+  text-align: center;
+  height: 472px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.template-info .emoji-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.template-info h2 {
+  font-size: 30px;
+  color: var(--black);
+  font-weight: 800;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+.template-info .tips-list {
+  text-align: right;
+  list-style: none;
+  padding: 0;
+}
+.template-info .tips-list li {
+  font-size: 18px;
+  color: var(--black);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--silver);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.template-info .tips-list li .num {
+  background: var(--olive);
+  color: var(--ivory);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.template-info .bottom-logo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 13px;
+  color: var(--olive);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.template-info .accent-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--olive);
+}
+
+/* Template 3: Promo/Offer */
+.template-promo {
+  width: 540px;
+  height: 540px;
+  background: var(--olive);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.template-promo .corner-tl, .template-promo .corner-br {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--silver);
+}
+.template-promo .corner-tl {
+  top: 25px; right: 25px;
+  border-left: none; border-bottom: none;
+}
+.template-promo .corner-br {
+  bottom: 25px; left: 25px;
+  border-right: none; border-top: none;
+}
+.template-promo .promo-subtitle {
+  font-size: 16px;
+  color: var(--silver);
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+.template-promo h2 {
+  font-size: 36px;
+  color: var(--ivory);
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.template-promo .promo-detail {
+  font-size: 18px;
+  color: var(--taupe);
+  margin-bottom: 30px;
+}
+.template-promo .cta-btn {
+  background: var(--ivory);
+  color: var(--olive);
+  padding: 12px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.template-promo .logo-bottom {
+  position: absolute;
+  bottom: 30px;
+  font-size: 14px;
+  color: var(--silver);
+  letter-spacing: 3px;
+}
+
+/* Template 4: Ramadan Greeting */
+.template-ramadan {
+  width: 540px;
+  height: 540px;
+  background: linear-gradient(160deg, var(--olive) 0%, #6e6f5c 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.template-ramadan .moon {
+  font-size: 70px;
+  margin-bottom: 25px;
+}
+.template-ramadan h2 {
+  font-size: 42px;
+  color: var(--ivory);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.template-ramadan .sub {
+  font-size: 20px;
+  color: var(--silver);
+  margin-bottom: 5px;
+}
+.template-ramadan .line {
+  width: 60px;
+  height: 2px;
+  background: var(--mocha);
+  margin: 20px auto;
+}
+.template-ramadan .brand {
+  position: absolute;
+  bottom: 30px;
+  font-size: 14px;
+  color: var(--silver);
+  letter-spacing: 3px;
+}
+.template-ramadan .border-frame {
+  position: absolute;
+  top: 20px; right: 20px; bottom: 20px; left: 20px;
+  border: 1px solid rgba(232,232,220,0.2);
+  border-radius: 4px;
+}
+
+/* Template 5: Question/Engagement */
+.template-question {
+  width: 540px;
+  height: 540px;
+  background: var(--ivory);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.template-question .side-accent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: var(--olive);
+}
+.template-question .content {
+  padding: 60px 50px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.template-question .q-emoji {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.template-question h2 {
+  font-size: 32px;
+  color: var(--black);
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+.template-question .options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.template-question .option {
+  background: white;
+  border: 2px solid var(--silver);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 18px;
+  color: var(--black);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.template-question .option .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--olive);
+  flex-shrink: 0;
+}
+.template-question .bottom-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: var(--olive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ivory);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Color palette section */
+.color-palette {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0 40px;
+  flex-wrap: wrap;
+}
+.color-swatch {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.templates-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.template-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.template-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+}
+.template-use {
+  font-size: 13px;
+  color: var(--mocha);
+  max-width: 540px;
+}
+</style>
+</head>
+<body>
+
+<p class="page-title">🎨 LASH SPACE — تمبلتات البراند</p>
+<p class="page-subtitle">الألوان والتصاميم المعتمدة لكل بوستات الانستقرام والتيك توك</p>
+
+<!-- Color Palette -->
+<div class="template-section">
+  <div class="section-title">🎨 لوحة الألوان المعتمدة</div>
+  <div class="section-desc">كل تصميم لازم يستخدم بس من هالألوان — بدون استثناء</div>
+  <div class="color-palette">
+    <div class="color-swatch" style="background: #898A73; color: #E8E8DC;">زيتوني<br>#898A73</div>
+    <div class="color-swatch" style="background: #E8E8DC; color: #1A1A1A;">عاجي<br>#E8E8DC</div>
+    <div class="color-swatch" style="background: #BBBAB3; color: #1A1A1A;">فضي<br>#BBBAB3</div>
+    <div class="color-swatch" style="background: #BAB0A5; color: #1A1A1A;">بيج<br>#BAB0A5</div>
+    <div class="color-swatch" style="background: #9C8974; color: #E8E8DC;">موكا<br>#9C8974</div>
+    <div class="color-swatch" style="background: #1A1A1A; color: #E8E8DC;">أسود<br>#1A1A1A</div>
+  </div>
+</div>
+
+<div class="templates-grid">
+
+<!-- Template 1: Before & After -->
+<div class="template-wrapper">
+  <div class="template-label">١. تمبلت قبل وبعد</div>
+  <div class="template-use">استخدميه لكل صور القبل والبعد — حطي صورتين مكان المربعات الرمادية</div>
+  <div class="template-ba">
+    <div class="top-bar">✨ قبل وبعد ✨</div>
+    <div class="photos-area">
+      <div class="photo-box">
+        <div class="icon">👁️</div>
+        <div class="label">بعد</div>
+      </div>
+      <div class="photo-box">
+        <div class="icon">👁️</div>
+        <div class="label">قبل</div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div class="logo-text">LASH SPACE</div>
+      <div class="info-text">📍 جدة - المنار<br>📲 الحجز في البايو</div>
+    </div>
+  </div>
+</div>
+
+<!-- Template 2: Tips/Info -->
+<div class="template-wrapper">
+  <div class="template-label">٢. تمبلت نصائح ومعلومات</div>
+  <div class="template-use">للبوستات التثقيفية والنصائح — غيّري العنوان والنقاط حسب الموضوع</div>
+  <div class="template-info">
+    <div class="accent-top"></div>
+    <div class="content">
+      <div class="emoji-icon">💡</div>
+      <h2>نصائح العناية بالرموش</h2>
+      <ul class="tips-list">
+        <li><span class="num">١</span> لا تفركين عيونك بقوة</li>
+        <li><span class="num">٢</span> نظفيهم يومياً بفرشاة سبولي</li>
+        <li><span class="num">٣</span> تجنبي المسكارا الووتربروف</li>
+        <li><span class="num">٤</span> نامي على ظهرك أو وسادة حرير</li>
+      </ul>
+    </div>
+    <div class="bottom-logo">LASH SPACE</div>
+    <div class="accent-bottom"></div>
+  </div>
+</div>
+
+<!-- Template 3: Promo -->
+<div class="template-wrapper">
+  <div class="template-label">٣. تمبلت عرض أو إعلان</div>
+  <div class="template-use">للعروض والخصومات وإعلانات المواعيد — غيّري النص والتفاصيل</div>
+  <div class="template-promo">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="promo-subtitle">✨ عرض خاص ✨</div>
+    <h2>مواعيد العيد<br>انفتحت! 🎉</h2>
+    <div class="promo-detail">احجزي قبل لا تخلص — الأماكن محدودة</div>
+    <div class="cta-btn">احجزي الحين 📲</div>
+    <div class="logo-bottom">LASH SPACE</div>
+  </div>
+</div>
+
+<!-- Template 4: Ramadan -->
+<div class="template-wrapper">
+  <div class="template-label">٤. تمبلت تهنئة رمضان / عيد</div>
+  <div class="template-use">للمناسبات والتهاني — رمضان كريم، عيد مبارك، إلخ</div>
+  <div class="template-ramadan">
+    <div class="border-frame"></div>
+    <div class="moon">🌙</div>
+    <h2>رمضان كريم</h2>
+    <div class="sub">كل عام وأنتم بخير</div>
+    <div class="line"></div>
+    <div class="sub" style="font-size: 16px; color: var(--taupe);">تقبل الله طاعتكم 🤲</div>
+    <div class="brand">LASH SPACE</div>
+  </div>
+</div>
+
+<!-- Template 5: Engagement -->
+<div class="template-wrapper">
+  <div class="template-label">٥. تمبلت سؤال تفاعلي</div>
+  <div class="template-use">للبوستات التفاعلية — اسألي المتابعات وخليهم يشاركون في الكومنتات</div>
+  <div class="template-question">
+    <div class="side-accent"></div>
+    <div class="content">
+      <div class="q-emoji">🤔</div>
+      <h2>أي ستايل رموش يناسبك؟</h2>
+      <div class="options">
+        <div class="option"><span class="dot"></span> كلاسيك — طبيعي وناعم 🤍</div>
+        <div class="option"><span class="dot"></span> هايبرد — بين الطبيعي والكثيف ✨</div>
+        <div class="option"><span class="dot"></span> فوليوم — كثيف ودرامي 🔥</div>
+        <div class="option"><span class="dot"></span> ويت لوك — مبلل وعصري 💧</div>
+      </div>
+    </div>
+    <div class="bottom-bar">LASH SPACE | جدة - المنار</div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

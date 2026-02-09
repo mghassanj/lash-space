@@ -32,7 +32,7 @@ const translations: Record<string, Record<Locale, string>> = {
   "nav.bookNow": { ar: "احجزي الآن", en: "Book Now" },
 
   // Hero Slider
-  "hero.slide1.title": { ar: "ترحيب", en: "Welcome" },
+  "hero.slide1.title": { ar: "أهلاً وسهلاً", en: "Welcome" },
   "hero.slide1.description": {
     ar: "مرحباً بك في مساحتك الخاصة التي صُممت بعناية لتجمع بين الفخامة، الراحة، والجمال الطبيعي.",
     en: "Welcome to your own space, carefully designed to bring together luxury, comfort, and natural beauty.",

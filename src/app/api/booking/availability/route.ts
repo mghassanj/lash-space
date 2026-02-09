@@ -3,14 +3,15 @@ import { prisma } from "@/lib/db";
 import { parse, format, addMinutes, isAfter, isBefore, startOfDay, endOfDay } from "date-fns";
 
 // Business hours by day of week (0 = Sunday, 6 = Saturday)
+// Sunday-Thursday: 9:00 AM - 6:00 PM | Friday & Saturday: Closed
 const BUSINESS_HOURS = {
-  0: null, // Sunday - closed
-  1: { open: "09:00", close: "19:00" }, // Monday
-  2: { open: "09:00", close: "19:00" }, // Tuesday
-  3: { open: "09:00", close: "19:00" }, // Wednesday
-  4: { open: "09:00", close: "21:00" }, // Thursday
-  5: { open: "09:00", close: "21:00" }, // Friday
-  6: { open: "10:00", close: "18:00" }, // Saturday
+  0: { open: "09:00", close: "18:00" }, // Sunday (الأحد)
+  1: { open: "09:00", close: "18:00" }, // Monday (الإثنين)
+  2: { open: "09:00", close: "18:00" }, // Tuesday (الثلاثاء)
+  3: { open: "09:00", close: "18:00" }, // Wednesday (الأربعاء)
+  4: { open: "09:00", close: "18:00" }, // Thursday (الخميس)
+  5: null, // Friday (الجمعة) - closed
+  6: null, // Saturday (السبت) - closed
 };
 
 const SLOT_INTERVAL = 30; // minutes
