@@ -48,7 +48,7 @@ export function Header() {
               priority
             />
             <span className="mt-1 text-[10px] tracking-[0.25em] uppercase text-[#BAB0A5]">
-              {locale === "ar" ? "أخصائية تركيب رموش — جدة" : "Lash Extension Specialist — Jeddah"}
+              {locale === "ar" ? "مساحة صُممت لراحتك وجمالك" : "A space designed for your comfort and beauty"}
             </span>
           </Link>
           {/* Nav links */}
