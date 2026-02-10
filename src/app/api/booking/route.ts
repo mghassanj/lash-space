@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { parse, addMinutes } from "date-fns";
+import { sendBookingNotification } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -104,6 +105,23 @@ export async function POST(request: NextRequest) {
         service: true,
         customer: true,
       },
+    });
+
+    // Send email notification (non-blocking)
+    sendBookingNotification({
+      customerName: appointment.customer.name,
+      customerPhone: appointment.customer.phone,
+      customerEmail: appointment.customer.email,
+      serviceName: appointment.service.name,
+      serviceNameAr: appointment.service.nameAr,
+      date: appointment.date,
+      duration: appointment.service.duration,
+      price: appointment.totalPrice,
+      allergies: appointment.customer.allergies,
+      dateOfBirth: appointment.customer.dateOfBirth,
+      notes: appointment.notes,
+    }).catch((error) => {
+      console.error("Email notification error (non-blocking):", error);
     });
 
     return NextResponse.json(

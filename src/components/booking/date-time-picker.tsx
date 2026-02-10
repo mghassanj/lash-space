@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { format, isBefore, startOfDay, addDays } from "date-fns";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { format12HourTime } from "@/lib/time-format";
+import { useI18n } from "@/lib/i18n";
 
 interface DateTimePickerProps {
   serviceId: string;
@@ -22,6 +24,7 @@ export function DateTimePicker({
   onSelectDate,
   onSelectTime,
 }: DateTimePickerProps) {
+  const { locale } = useI18n();
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -55,8 +58,9 @@ export function DateTimePicker({
     if (isBefore(date, startOfDay(new Date()))) {
       return true;
     }
-    // Disable Sundays (day 0)
-    if (date.getDay() === 0) {
+    // Disable Friday (5) and Saturday (6)
+    const dayOfWeek = date.getDay();
+    if (dayOfWeek === 5 || dayOfWeek === 6) {
       return true;
     }
     return false;
@@ -100,7 +104,7 @@ export function DateTimePicker({
               No available times for this date. Please select another day.
             </p>
           ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {availableSlots.map((time) => (
                 <motion.div
                   key={time}
@@ -110,13 +114,13 @@ export function DateTimePicker({
                   <Button
                     variant={selectedTime === time ? "default" : "outline"}
                     onClick={() => onSelectTime(time)}
-                    className={`w-full ${
+                    className={`w-full py-6 text-lg font-medium ${
                       selectedTime === time
                         ? "bg-[#9C8974] hover:bg-[#B07E5C] text-white"
                         : "border-gray-300 hover:border-[#9C8974] text-[#1A1A1A]"
                     }`}
                   >
-                    {time}
+                    {format12HourTime(time, locale)}
                   </Button>
                 </motion.div>
               ))}

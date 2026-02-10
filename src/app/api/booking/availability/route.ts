@@ -14,7 +14,8 @@ const BUSINESS_HOURS = {
   6: null, // Saturday (السبت) - closed
 };
 
-const SLOT_INTERVAL = 30; // minutes
+// Fixed time slots: 9:00 AM, 12:00 PM, 3:00 PM, 6:00 PM
+const TIME_SLOTS = ["09:00", "12:00", "15:00", "18:00"];
 
 export async function GET(request: NextRequest) {
   try {
@@ -53,21 +54,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ slots: [] });
     }
 
-    // Generate all possible time slots for the day
-    const openTime = parse(hours.open, "HH:mm", selectedDate);
-    const closeTime = parse(hours.close, "HH:mm", selectedDate);
-
-    const allSlots: string[] = [];
-    let currentSlot = openTime;
-
-    while (isBefore(currentSlot, closeTime)) {
-      // Only add slot if appointment can finish before closing
-      const appointmentEnd = addMinutes(currentSlot, service.duration);
-      if (isBefore(appointmentEnd, closeTime) || appointmentEnd.getTime() === closeTime.getTime()) {
-        allSlots.push(format(currentSlot, "HH:mm"));
-      }
-      currentSlot = addMinutes(currentSlot, SLOT_INTERVAL);
-    }
+    // Use fixed time slots
+    const allSlots: string[] = TIME_SLOTS;
 
     // Get existing appointments for this date
     const startOfSelectedDay = startOfDay(selectedDate);

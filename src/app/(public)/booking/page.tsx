@@ -74,7 +74,7 @@ export default async function BookingPage() {
               <ul className="space-y-3 text-[#1A1A1A]">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 text-[#9C8974]">•</span>
-                  <span>دفعة تأمينية <strong>50 ريال</strong> عند الحجز (تُخصم من إجمالي الخدمة)</span>
+                  <span>دفعة تأمينية <strong>150 ريال</strong> عند الحجز (تُخصم من إجمالي الخدمة)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 text-[#9C8974]">•</span>

@@ -9,7 +9,8 @@ import {
   Settings,
   Package,
   Menu,
-  LogOut
+  LogOut,
+  Star
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";

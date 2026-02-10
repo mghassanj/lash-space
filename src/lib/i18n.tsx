@@ -189,6 +189,26 @@ const translations: Record<string, Record<Locale, string>> = {
   // Common
   "common.popular": { ar: "مميز", en: "Popular" },
   "common.sar": { ar: "ر.س", en: "SAR" },
+
+  // Reviews
+  "reviews.title": { ar: "شاركينا تجربتك", en: "Share Your Experience" },
+  "reviews.subtitle": { ar: "رأيك يهمنا! شاركي تجربتك مع لاش سبيس", en: "Your opinion matters! Share your experience with Lash Space" },
+  "reviews.yourName": { ar: "الاسم", en: "Your Name" },
+  "reviews.rating": { ar: "التقييم", en: "Rating" },
+  "reviews.selectRating": { ar: "اختاري التقييم", en: "Select Rating" },
+  "reviews.comment": { ar: "التعليق", en: "Comment" },
+  "reviews.commentPlaceholder": { ar: "شاركينا تجربتك مع خدماتنا...", en: "Share your experience with our services..." },
+  "reviews.service": { ar: "الخدمة (اختياري)", en: "Service (Optional)" },
+  "reviews.selectService": { ar: "اختاري الخدمة", en: "Select Service" },
+  "reviews.submit": { ar: "إرسال التقييم", en: "Submit Review" },
+  "reviews.successTitle": { ar: "شكراً لك!", en: "Thank You!" },
+  "reviews.successMessage": { ar: "تقييمك بينزل بعد المراجعة", en: "Your review will be published after approval" },
+  "reviews.errorMessage": { ar: "حدث خطأ، يرجى المحاولة مرة أخرى", en: "An error occurred, please try again" },
+
+  // Blog Featured
+  "blog.featured": { ar: "من المدونة", en: "From the Blog" },
+  "blog.featuredSubtitle": { ar: "نصائح ومعلومات مفيدة عن عالم الرموش", en: "Tips and insights from the world of lashes" },
+  "blog.browseAll": { ar: "لتصفح مدونتنا", en: "Browse Our Blog" },
 };
 
 export function I18nProvider({ children }: { children: ReactNode }) {

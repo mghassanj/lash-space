@@ -7,6 +7,7 @@ import { CheckCircle2, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
+import { format12HourTime } from "@/lib/time-format";
 
 interface BookingConfirmationProps {
   appointment: {
@@ -137,7 +138,7 @@ export function BookingConfirmation({ appointment }: BookingConfirmationProps) {
             <div className="flex justify-between">
               <span className="text-gray-600">{isAr ? "الوقت:" : "Time:"}</span>
               <span className="font-medium text-[#1A1A1A]">
-                {format(new Date(date), "h:mm a")}
+                {format12HourTime(format(new Date(date), "HH:mm"), locale)}
               </span>
             </div>
             <div className="flex justify-between">
@@ -150,6 +151,12 @@ export function BookingConfirmation({ appointment }: BookingConfirmationProps) {
               <span className="text-gray-600 font-semibold">{isAr ? "الإجمالي:" : "Total:"}</span>
               <span className="font-bold text-[#9C8974] text-xl">
                 {appointment.totalPrice} {isAr ? "ر.س" : "SAR"}
+              </span>
+            </div>
+            <div className="flex justify-between pt-2">
+              <span className="text-gray-600 text-sm">{isAr ? "الدفعة التأمينية:" : "Deposit:"}</span>
+              <span className="font-semibold text-[#1A1A1A]">
+                150 {isAr ? "ر.س" : "SAR"}
               </span>
             </div>
           </div>

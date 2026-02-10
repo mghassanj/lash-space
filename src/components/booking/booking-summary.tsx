@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Calendar, Clock, User, Phone, Mail, FileText, Cake, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
+import { format12HourTime } from "@/lib/time-format";
 
 interface Service {
   id: string;
@@ -107,7 +108,7 @@ export function BookingSummary({
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Clock className="w-4 h-4 text-[#9C8974]" />
-                <span>{time}</span>
+                <span>{format12HourTime(time, locale)}</span>
               </div>
             </div>
           </div>
@@ -157,13 +158,26 @@ export function BookingSummary({
             </div>
           </div>
 
-          {/* Total */}
-          <div className="p-4 bg-[#1A1A1A] text-white rounded-lg">
+          {/* Payment Information */}
+          <div className="p-4 bg-[#1A1A1A] text-white rounded-lg space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-lg font-semibold">{isAr ? "الإجمالي" : "Total"}</span>
               <span className="text-2xl font-bold text-[#9C8974]">
                 {service.price} {isAr ? "ر.س" : "SAR"}
               </span>
+            </div>
+            <div className="pt-3 border-t border-gray-700">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-300">{isAr ? "الدفعة التأمينية المطلوبة" : "Deposit Required"}</span>
+                <span className="text-lg font-semibold text-[#E8E8DC]">
+                  150 {isAr ? "ر.س" : "SAR"}
+                </span>
+              </div>
+              <p className="text-xs text-gray-400">
+                {isAr 
+                  ? "تُخصم من إجمالي الخدمة • غير مستردة في حال الإلغاء المتأخر"
+                  : "Deducted from total service cost • Non-refundable for late cancellations"}
+              </p>
             </div>
           </div>
         </div>

@@ -114,3 +114,14 @@ model AdminUser {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Review {
+  id          String   @id @default(cuid())
+  name        String
+  rating      Int      // 1-5
+  comment     String
+  serviceType String?
+  approved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

@@ -15,6 +15,9 @@ import {
 import { Section } from "@/components/public/Section";
 import { InstagramFeed } from "@/components/public/InstagramFeed";
 import { useI18n } from "@/lib/i18n";
+import ReviewForm from "@/components/public/ReviewForm";
+import FeaturedBlogPosts from "@/components/public/FeaturedBlogPosts";
+import TestimonialsSection from "@/components/public/TestimonialsSection";
 
 const heroSlides = [
   {
@@ -154,42 +157,10 @@ export default function HomePage() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: locale === "ar" ? "سارة م." : "Sara M.",
-      rating: 5,
-      text:
-        locale === "ar"
-          ? "حبيت رموشي! الفنانة كانت ماهرة ولطيفة جدًا. أفضل تجربة رموش مرت علي!"
-          : "Absolutely in love with my lashes! The technician was so skilled and gentle. Best lash experience I've ever had!",
-      service: locale === "ar" ? "فوليوم" : "Volume",
-    },
-    {
-      name: locale === "ar" ? "نورة خ." : "Noura K.",
-      rating: 5,
-      text:
-        locale === "ar"
-          ? "الاستوديو جميل ومريح. رموشي تبان طبيعية وفخمة. كل يوم أحصل على مجاملات!"
-          : "The studio is gorgeous and so relaxing. My lashes look natural yet glamorous. I get compliments every day!",
-      service: locale === "ar" ? "هايبرد كامل" : "Hybrid Full Set",
-    },
-    {
-      name: locale === "ar" ? "ريم ع." : "Reem A.",
-      rating: 5,
-      text:
-        locale === "ar"
-          ? "أزور لاش سبيس من شهور ورموشي دايم مثالية. الثبات مذهل والفريق رائع!"
-          : "I've been coming here for months and my lashes always look perfect. The retention is amazing!",
-      service: locale === "ar" ? "كلاسيك كامل" : "Classic Full Set",
-    },
-  ];
-
   return (
     <>
       {/* Hero Section — Slider + CTA */}
       <HeroSection t={t} locale={locale} />
-
-      {/* Featured Services section removed */}
 
       {/* Why Choose Us */}
       <Section className="bg-[#E8E8DC]">
@@ -221,45 +192,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Testimonials */}
-      <Section className="bg-white">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 font-serif text-4xl font-bold text-[#1A1A1A]">
-            {t("testimonials.title")}
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            {t("testimonials.subtitle")}
-          </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <Card
-              key={testimonial.name}
-              className="border-[#9C8974]/20 bg-[#E8E8DC]/30"
-            >
-              <CardHeader>
-                <div className="mb-2 flex gap-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 fill-[#9C8974] text-[#9C8974]"
-                    />
-                  ))}
-                </div>
-                <CardTitle className="text-lg">{testimonial.name}</CardTitle>
-                <CardDescription className="text-sm">
-                  {testimonial.service}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="italic text-muted-foreground">
-                  &ldquo;{testimonial.text}&rdquo;
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </Section>
+      {/* Featured Blog Posts */}
+      <FeaturedBlogPosts />
+
+      {/* Testimonials with Review Form */}
+      <TestimonialsSection />
 
       {/* Instagram Feed */}
       <InstagramFeed />
