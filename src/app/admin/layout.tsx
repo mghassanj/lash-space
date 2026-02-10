@@ -10,7 +10,8 @@ import {
   Package,
   Menu,
   LogOut,
-  Star
+  Star,
+  BookOpen
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -27,6 +28,7 @@ const navLinks = [
   { href: "/admin/appointments", label: "المواعيد", icon: Calendar },
   { href: "/admin/customers", label: "العملاء", icon: Users },
   { href: "/admin/services", label: "الخدمات", icon: Sparkles },
+  { href: "/admin/blog", label: "المدونة", icon: BookOpen },
   { href: "/admin/inventory", label: "المخزون", icon: Package },
   { href: "/admin/analytics", label: "التحليلات", icon: BarChart3 },
   { href: "/admin/settings", label: "الإعدادات", icon: Settings },
