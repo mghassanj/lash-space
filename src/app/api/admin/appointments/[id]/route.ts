@@ -40,10 +40,38 @@ export async function PATCH(
     const { id } = await params;
     const body = await request.json();
     
+    // Get the current appointment to check if status is changing to completed
+    const currentAppointment = await prisma.appointment.findUnique({
+      where: { id },
+    });
+
+    if (!currentAppointment) {
+      return NextResponse.json(
+        { error: "Appointment not found" },
+        { status: 404 }
+      );
+    }
+
+    // Update the appointment
     const appointment = await prisma.appointment.update({
       where: { id },
       data: body,
     });
+
+    // If status changed to completed and wasn't completed before, increment customer's completed visits
+    if (
+      body.status === "completed" &&
+      currentAppointment.status !== "completed"
+    ) {
+      await prisma.customer.update({
+        where: { id: appointment.customerId },
+        data: {
+          completedVisits: {
+            increment: 1,
+          },
+        },
+      });
+    }
 
     return NextResponse.json(appointment);
   } catch (error) {

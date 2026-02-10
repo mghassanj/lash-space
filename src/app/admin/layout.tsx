@@ -11,7 +11,8 @@ import {
   Menu,
   LogOut,
   Star,
-  BookOpen
+  BookOpen,
+  Clock
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -26,6 +27,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 const navLinks = [
   { href: "/admin", label: "لوحة التحكم", icon: LayoutDashboard },
   { href: "/admin/appointments", label: "المواعيد", icon: Calendar },
+  { href: "/admin/schedule", label: "الجدول", icon: Clock },
   { href: "/admin/customers", label: "العملاء", icon: Users },
   { href: "/admin/services", label: "الخدمات", icon: Sparkles },
   { href: "/admin/blog", label: "المدونة", icon: BookOpen },

@@ -90,6 +90,13 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    // Check loyalty eligibility
+    const nextVisitCount = customer.completedVisits + 1;
+    const isEligibleForDiscount = nextVisitCount % 5 === 0;
+    const discountPercentage = isEligibleForDiscount ? 25 : 0;
+    const loyaltyDiscount = isEligibleForDiscount ? service.price * 0.25 : null;
+    const finalPrice = isEligibleForDiscount ? service.price * 0.75 : service.price;
+
     // Create appointment
     const appointment = await prisma.appointment.create({
       data: {
@@ -99,7 +106,8 @@ export async function POST(request: NextRequest) {
         endTime: endTime,
         status: "pending",
         notes: notes || null,
-        totalPrice: service.price,
+        totalPrice: finalPrice,
+        loyaltyDiscount: loyaltyDiscount,
       },
       include: {
         service: true,

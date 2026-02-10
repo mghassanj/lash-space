@@ -1,21 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { parse, format, addMinutes, isAfter, isBefore, startOfDay, endOfDay } from "date-fns";
-
-// Business hours by day of week (0 = Sunday, 6 = Saturday)
-// Sunday-Thursday: 9:00 AM - 6:00 PM | Friday & Saturday: Closed
-const BUSINESS_HOURS = {
-  0: { open: "09:00", close: "18:00" }, // Sunday (الأحد)
-  1: { open: "09:00", close: "18:00" }, // Monday (الإثنين)
-  2: { open: "09:00", close: "18:00" }, // Tuesday (الثلاثاء)
-  3: { open: "09:00", close: "18:00" }, // Wednesday (الأربعاء)
-  4: { open: "09:00", close: "18:00" }, // Thursday (الخميس)
-  5: null, // Friday (الجمعة) - closed
-  6: null, // Saturday (السبت) - closed
-};
-
-// Fixed time slots: 9:00 AM, 12:00 PM, 3:00 PM, 6:00 PM
-const TIME_SLOTS = ["09:00", "12:00", "15:00", "18:00"];
+import { parse, addMinutes, isAfter, isBefore, startOfDay, endOfDay, format } from "date-fns";
 
 export async function GET(request: NextRequest) {
   try {
@@ -45,22 +30,47 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
 
-    // Get day of week
-    const dayOfWeek = selectedDate.getDay();
-    const hours = BUSINESS_HOURS[dayOfWeek as keyof typeof BUSINESS_HOURS];
-
-    if (!hours) {
-      // Closed on this day
-      return NextResponse.json({ slots: [] });
-    }
-
-    // Use fixed time slots
-    const allSlots: string[] = TIME_SLOTS;
-
-    // Get existing appointments for this date
+    // Check if this date is a day off
     const startOfSelectedDay = startOfDay(selectedDate);
     const endOfSelectedDay = endOfDay(selectedDate);
 
+    const dayOff = await prisma.dayOff.findFirst({
+      where: {
+        date: {
+          gte: startOfSelectedDay,
+          lte: endOfSelectedDay,
+        },
+      },
+    });
+
+    if (dayOff) {
+      // This date is blocked
+      return NextResponse.json({ slots: [], reason: dayOff.reason });
+    }
+
+    // Get day of week (0=Sunday, 1=Monday... 6=Saturday)
+    const dayOfWeek = selectedDate.getDay();
+
+    // Get work schedule for this day
+    const workSchedule = await prisma.workSchedule.findUnique({
+      where: { dayOfWeek },
+      include: {
+        timeSlots: {
+          where: { isActive: true },
+          orderBy: { time: "asc" },
+        },
+      },
+    });
+
+    if (!workSchedule || !workSchedule.isOpen || workSchedule.timeSlots.length === 0) {
+      // Closed on this day or no time slots available
+      return NextResponse.json({ slots: [] });
+    }
+
+    // Get all active time slots for this day
+    const allSlots: string[] = workSchedule.timeSlots.map((slot) => slot.time);
+
+    // Get existing appointments for this date
     const existingAppointments = await prisma.appointment.findMany({
       where: {
         date: {

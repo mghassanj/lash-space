@@ -19,6 +19,7 @@ interface Customer {
   notes: string | null;
   skinType: string | null;
   allergies: string | null;
+  completedVisits: number;
   createdAt: string;
   _count?: { appointments: number };
   totalSpent?: number;
@@ -242,6 +243,7 @@ export default function CustomersContent() {
                     <th className="text-right py-3 px-4 font-medium text-gray-600">الاسم</th>
                     <th className="text-right py-3 px-4 font-medium text-gray-600">معلومات الاتصال</th>
                     <th className="text-right py-3 px-4 font-medium text-gray-600">إجمالي الزيارات</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600">الولاء</th>
                     <th className="text-right py-3 px-4 font-medium text-gray-600">إجمالي الإنفاق</th>
                     <th className="text-right py-3 px-4 font-medium text-gray-600">آخر زيارة</th>
                     <th className="text-right py-3 px-4 font-medium text-gray-600">الإجراءات</th>
@@ -258,6 +260,16 @@ export default function CustomersContent() {
                         </div>
                       </td>
                       <td className="py-3 px-4 text-right">{customer._count?.appointments || 0}</td>
+                      <td className="py-3 px-4 text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <span className="font-medium">{customer.completedVisits}</span>
+                          {customer.completedVisits > 0 && (customer.completedVisits + 1) % 5 === 0 && (
+                            <Badge className="bg-[#898A73] text-white text-xs">
+                              القادمة: خصم ٢٥٪
+                            </Badge>
+                          )}
+                        </div>
+                      </td>
                       <td className="py-3 px-4 text-right font-medium">
                         {(customer.totalSpent || 0).toFixed(2)} ر.س
                       </td>
@@ -392,13 +404,26 @@ export default function CustomersContent() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
                   <Card>
                     <CardContent className="pt-6">
                       <div className="text-2xl font-bold">
                         {selectedCustomer.appointments.length}
                       </div>
                       <div className="text-sm text-gray-500">Total Visits</div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardContent className="pt-6">
+                      <div className="text-2xl font-bold">
+                        {selectedCustomer.completedVisits}
+                      </div>
+                      <div className="text-sm text-gray-500">Completed Visits</div>
+                      {selectedCustomer.completedVisits > 0 && (
+                        <div className="text-xs text-gray-500 mt-1">
+                          Next discount at: {Math.ceil((selectedCustomer.completedVisits + 1) / 5) * 5}
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                   <Card>

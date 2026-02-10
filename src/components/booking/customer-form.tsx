@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
+import { Gift } from "lucide-react";
 
 export interface CustomerFormData {
   name: string;
@@ -38,6 +39,48 @@ export function CustomerForm({ initialData, onSubmit, onBack }: CustomerFormProp
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof CustomerFormData, string>>>({});
+  const [loyaltyInfo, setLoyaltyInfo] = useState<{
+    isEligibleForDiscount: boolean;
+    discountPercentage: number;
+    completedVisits: number;
+  } | null>(null);
+  const [checkingLoyalty, setCheckingLoyalty] = useState(false);
+
+  // Check loyalty when phone number changes (debounced)
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (formData.phone && /^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
+        checkLoyalty(formData.phone);
+      } else {
+        setLoyaltyInfo(null);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [formData.phone]);
+
+  const checkLoyalty = async (phone: string) => {
+    setCheckingLoyalty(true);
+    try {
+      const response = await fetch(`/api/loyalty/check?phone=${encodeURIComponent(phone)}`);
+      const data = await response.json();
+      
+      if (data.isEligibleForDiscount) {
+        setLoyaltyInfo({
+          isEligibleForDiscount: data.isEligibleForDiscount,
+          discountPercentage: data.discountPercentage,
+          completedVisits: data.completedVisits,
+        });
+      } else {
+        setLoyaltyInfo(null);
+      }
+    } catch (error) {
+      console.error("Error checking loyalty:", error);
+      setLoyaltyInfo(null);
+    } finally {
+      setCheckingLoyalty(false);
+    }
+  };
 
   const validateForm = () => {
     const newErrors: Partial<Record<keyof CustomerFormData, string>> = {};
@@ -112,6 +155,20 @@ export function CustomerForm({ initialData, onSubmit, onBack }: CustomerFormProp
           />
           {errors.phone && (
             <p className="text-sm text-red-500">{errors.phone}</p>
+          )}
+          {loyaltyInfo && loyaltyInfo.isEligibleForDiscount && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 p-3 bg-[#898A73]/10 border-2 border-[#898A73] rounded-lg"
+            >
+              <Gift className="w-5 h-5 text-[#898A73] flex-shrink-0" />
+              <p className="text-sm font-medium text-[#898A73]">
+                {isAr 
+                  ? `🎉 جلستك الخامسة! خصم ٢٥٪ على هذا الحجز`
+                  : `🎉 Your 5th visit! 25% discount on this booking`}
+              </p>
+            </motion.div>
           )}
         </div>
 

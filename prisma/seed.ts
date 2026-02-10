@@ -406,6 +406,43 @@ async function main() {
     console.log(`  ✅ Blog: ${post.title}`);
   }
 
+  // --- Work Schedule ---
+  console.log("🌱 Seeding work schedule...");
+
+  // Clear existing schedule data
+  await prisma.timeSlot.deleteMany();
+  await prisma.workSchedule.deleteMany();
+
+  const defaultTimeSlots = ["09:00", "12:00", "15:00", "18:00"];
+
+  for (let dayOfWeek = 0; dayOfWeek <= 6; dayOfWeek++) {
+    // Sunday=0, Monday=1, ..., Saturday=6
+    // Friday=5, Saturday=6 are closed
+    const isOpen = dayOfWeek !== 5 && dayOfWeek !== 6;
+
+    const schedule = await prisma.workSchedule.create({
+      data: {
+        dayOfWeek,
+        isOpen,
+      },
+    });
+
+    if (isOpen) {
+      for (const time of defaultTimeSlots) {
+        await prisma.timeSlot.create({
+          data: {
+            workScheduleId: schedule.id,
+            time,
+            isActive: true,
+          },
+        });
+      }
+    }
+
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    console.log(`  ✅ Schedule: ${dayNames[dayOfWeek]} - ${isOpen ? "Open" : "Closed"}`);
+  }
+
   console.log("✨ All seeding complete!");
 }
 
