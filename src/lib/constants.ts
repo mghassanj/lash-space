@@ -30,7 +30,7 @@ export const SITE_CONFIG = {
     wednesday: { en: "10:00 AM – 9:00 PM", ar: "١٠:٠٠ ص – ٩:٠٠ م" },
     thursday: { en: "10:00 AM – 9:00 PM", ar: "١٠:٠٠ ص – ٩:٠٠ م" },
     friday: { en: "Closed", ar: "مغلق" },
-    saturday: { en: "10:00 AM – 9:00 PM", ar: "١٠:٠٠ ص – ٩:٠٠ م" },
+    saturday: { en: "Closed", ar: "مغلق" },
   },
   currency: "SAR",
   locale: "en",

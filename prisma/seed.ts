@@ -184,7 +184,7 @@ async function main() {
         wednesday: { open: "10:00", close: "21:00" },
         thursday: { open: "10:00", close: "21:00" },
         friday: { closed: true },
-        saturday: { open: "10:00", close: "21:00" },
+        saturday: { closed: true },
       }),
       socialLinks: JSON.stringify({
         instagram: "https://instagram.com/lashspace.sa",
